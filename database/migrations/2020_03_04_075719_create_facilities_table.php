@@ -4,20 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaciliciesTable extends Migration
+class CreateFacilitiesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
-        Schema::create('facilicies', function (Blueprint $table) {
+        Schema::create('facilities', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('state_id');
-            $table->unsignedInteger('LGA_id');
+            $table->unsignedInteger('state_id')->nullable();
+            $table->unsignedInteger('lga_id')->nullable();
 
             $table->string('name');
             $table->string('code');
@@ -27,13 +23,8 @@ class CreateFaciliciesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('facilicies');
+        Schema::dropIfExists('facilities');
     }
 }

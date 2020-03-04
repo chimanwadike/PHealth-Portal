@@ -8,20 +8,24 @@ class AddForeignKeyToFacilicies extends Migration
 {
     public function up()
     {
-        $table->foreign('state_id')
-          ->references('id')->on('states')
-          ->onUpdate('cascade')
-          ->onDelete('set null');
+        Schema::table('facilities', function (Blueprint $table) {
+            $table->foreign('state_id')
+              ->references('id')->on('states')
+              ->onUpdate('cascade')
+              ->onDelete('set null');
 
-        $table->foreign('LGA_id')
-          ->references('id')->on('l_g_as')
-          ->onUpdate('cascade')
-          ->onDelete('set null');
+            $table->foreign('lga_id')
+              ->references('id')->on('lgas')
+              ->onUpdate('cascade')
+              ->onDelete('set null');
+        });
     }
 
     public function down()
     {
-        $table->dropForeign(['state_id']);
-        $table->dropForeign(['LGA_id']);
+        Schema::table('facilities', function (Blueprint $table) {
+            $table->dropForeign(['state_id']);
+            $table->dropForeign(['lga_id']);
+        });
     }
 }
