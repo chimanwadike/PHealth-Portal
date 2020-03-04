@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->user()){
+        return redirect()->route('home');
+    }else{
+        return view('auth.login');
+    }
+})->name("base");
+
+Route::middleware('auth')->group(function () {
+	Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/facilities', 'Web\FacilityController');
 });
+
+Auth::routes();
