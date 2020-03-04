@@ -31,7 +31,6 @@ class CreateClientsTable extends Migration
             $table->string('PhoneNumber', 50)->nullable();
             $table->datetime('FormDate')->nullable();
             $table->string('CurrentResult', 50)->nullable();
-            $table->datetime('FormDate')->nullable();
             $table->datetime('HivTestDate')->nullable();
             $table->longText('Comment')->nullable();
             $table->integer('PreviouslyTested')->nullable();

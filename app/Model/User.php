@@ -16,4 +16,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function uploaded_clients()
+	{
+		return $this->hasMany('App\Client', 'UserId', 'id');
+	}
 }

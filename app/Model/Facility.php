@@ -15,4 +15,9 @@ class Facility extends Model
 	{
 		return $this->belongsTo('App\Lga', 'lga_code', 'lga_code');
 	}
+
+	public function clients()
+	{
+		return $this->hasMany('App\Client', 'FacilityId', 'id');
+	}
 }

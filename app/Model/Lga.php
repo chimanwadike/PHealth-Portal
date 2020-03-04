@@ -15,4 +15,9 @@ class Lga extends Model
 	{
 		return $this->belongsTo('App\State', 'state_code', 'state_code');
 	}
+
+	public function clients()
+	{
+		return $this->hasMany('App\Client', 'ClientLga', 'id');
+	}
 }
