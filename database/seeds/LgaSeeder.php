@@ -9,7 +9,7 @@ class LgaSeeder extends CsvSeeder
 	public function __construct()
 	{
 		$this->table = 'lgas';
-		$this->filename = base_path().'/database/seeds/Excel/new-lgas.xlsx';
+		$this->filename = base_path().'/database/seeds/Excel/new-lgas1.csv';
 	}
 
     public function run()
