@@ -15,6 +15,14 @@ class CreateFaciliciesTable extends Migration
     {
         Schema::create('facilicies', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->unsignedInteger('state_id');
+            $table->unsignedInteger('LGA_id');
+
+            $table->string('name');
+            $table->string('code');
+            $table->string('contact_person');
+
             $table->timestamps();
         });
     }
