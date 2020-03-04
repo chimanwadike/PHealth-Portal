@@ -9,10 +9,10 @@ class CreateStatesTable extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('state_code');
 
             $table->string('state_name');
-
+            
             $table->timestamps();
         });
     }

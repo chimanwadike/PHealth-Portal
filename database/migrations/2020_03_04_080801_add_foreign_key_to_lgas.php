@@ -9,8 +9,8 @@ class AddForeignKeyToLgas extends Migration
     public function up()
     {
         Schema::table('lgas', function (Blueprint $table) {
-            $table->foreign('state_id')
-              ->references('id')->on('states')
+            $table->foreign('state_code')
+              ->references('state_code')->on('states')
               ->onUpdate('cascade')
               ->onDelete('cascade');
         });
@@ -19,7 +19,7 @@ class AddForeignKeyToLgas extends Migration
     public function down()
     {
         Schema::table('lgas', function (Blueprint $table) {
-            $table->dropForeign(['state_id']);
+            $table->dropForeign(['state_code']);
         });
     }
 }
