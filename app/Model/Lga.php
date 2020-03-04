@@ -8,11 +8,11 @@ class Lga extends Model
 {
 	public function facilities()
 	{
-		return $this->hasMany('App\Facility');
+		return $this->hasMany('App\Facility', 'lga_code', 'lga_code');
 	}
 
 	public function state()
 	{
-		return $this->belongsTo('App\State');
+		return $this->belongsTo('App\State', 'state_code', 'state_code');
 	}
 }

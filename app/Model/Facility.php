@@ -8,11 +8,11 @@ class Facility extends Model
 {
 	public function state()
 	{
-		return $this->belongsTo('App\State');
+		return $this->belongsTo('App\State', 'state_code', 'state_code');
 	}
 
 	public function lga()
 	{
-		return $this->belongsTo('App\Lga');
+		return $this->belongsTo('App\Lga', 'lga_code', 'lga_code');
 	}
 }
