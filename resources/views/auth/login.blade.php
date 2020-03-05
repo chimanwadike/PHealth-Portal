@@ -1,4 +1,4 @@
-@extends('pages.layouts.login_layout')
+@extends('pages.layouts.login_layout', ['title' => 'Login'])
 
 @section('content')
     <div class="text-center m-b-md custom-login">
@@ -30,14 +30,20 @@
                         @endif
                     </div>
 
-                    <div class="checkbox login-checkbox">
-                        <label>
-                        <input type="checkbox" name="remember" id="remember" class="i-checks" {{ old('remember') ? 'checked' : '' }}> Remember me </label>
-                        <p class="help-block small">(if this is a private computer)</p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="checkbox login-checkbox">
+                                <label>
+                                <input type="checkbox" name="remember" id="remember" class="i-checks" {{ old('remember') ? 'checked' : '' }}> Remember me </label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 text-right">
+                            <a style="background: none; color: black;" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-success btn-block loginbtn">Login</button>
-                    <a class="btn btn-default btn-block" href="{{ route('password.request') }}">Forgot Your Password?</a>
                 </form>
             </div>
         </div>
