@@ -19,7 +19,7 @@
 
                     <div class="form-group state-error">
                         <label class="control-label" for="email">Email (Username)</label>
-                        <input id="email" type="email" placeholder="example@gmail.com" value="{{ old('email') }}" name="email" class="form-control invalid{{ $errors->has('email') ? ' invalid' : '' }}" required autofocus>
+                        <input id="email" type="email" placeholder="example@gmail.com" value="{{ old('email') }}" name="email" class="form-control{{ $errors->has('email') ? ' invalid' : '' }}" required autofocus>
                         @if ($errors->has('email'))
                             <strong class="text-danger">{{ $errors->first('email') }}</strong>
                         @endif

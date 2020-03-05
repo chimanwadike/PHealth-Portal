@@ -14,8 +14,8 @@
 
                     <div class="form-group state-error">
                         <label class="control-label" for="email">Email (Username)</label>
-                        <input id="email" type="email" placeholder="example@gmail.com" value="{{ old('email') }}" name="email" class="form-control invalid{{ $errors->has('email') ? ' invalid' : '' }}" required autofocus>
-                        @if ($errors->has('email'))
+                        <input id="email" type="email" placeholder="example@gmail.com" value="{{ old('email') }}" name="email" class="form-control{{ $errors->has('email') ? ' invalid' : '' }}" required autofocus>
+                        @if($errors->has('email'))
                             <strong class="text-danger">{{ $errors->first('email') }}</strong>
                         @endif
                     </div>
@@ -24,9 +24,7 @@
                         <label class="control-label" for="password">Password</label>
                         <input type="password" title="Please enter your password" placeholder="******" required value="" name="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
                         @if ($errors->has('password'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                            <strong class="text-danger">{{ $errors->first('password') }}</strong>
                         @endif
                     </div>
 
