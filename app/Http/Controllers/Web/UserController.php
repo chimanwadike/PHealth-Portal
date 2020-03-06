@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\User;
-use App\Model\Role;
+use App\User;
+use App\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Events\UserCreated;
 
@@ -189,7 +189,7 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function show()
+    public function edit()
     {
         return view('pages.profile.edit_profile');
     }

@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     @include("pages.partials.style")
+    @yield("style")
 </head>
 
 <body>
@@ -46,6 +47,7 @@
     </div>
 
     @include("pages.partials.script")
+    @yield("script")
 </body>
 
 </html>
