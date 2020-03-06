@@ -14,6 +14,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('pages.layouts.layout');
+        return view('pages.sample');
     }
 }
