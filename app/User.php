@@ -22,4 +22,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\Client', 'UserId', 'id');
 	}
+
+    public function getUserProfileAttribute()
+    {
+        return asset('storage/'.$this->profile_image);
+    }
 }

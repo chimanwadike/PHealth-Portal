@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Model;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Models\LaratrustRole;
