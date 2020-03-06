@@ -59,5 +59,5 @@
     <!-- tawk chat JS
 		============================================ -->
     <script src="{{ asset('js/tawk-chat.js') }}"></script>
-	
+	@include('notify::messages')
 	@notifyJs
