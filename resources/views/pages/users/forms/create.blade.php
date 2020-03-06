@@ -1,6 +1,5 @@
 <form method="POST" novalidate="novalidate" action="{{ route('users.store') }}">
     @csrf
-
     <div class="form-row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Full Name:</label>
@@ -72,5 +71,4 @@
         <button type="submit" class="btn btn-primary">Create</button>
         <a href="{{ route("users.index") }}" class="btn btn-default">Cancel</a>
     </div>
-
 </form>    
