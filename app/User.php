@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable, LaratrustUserTrait;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','profile_image', 'created_by', 'facility_id', 'sex', 'address', 'phone'
     ];
 
     protected $hidden = [

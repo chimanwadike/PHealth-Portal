@@ -44,3 +44,28 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            //Code to hide and show user selection field based on message type selection
+            const type = document.getElementById('role');
+
+            if(type != null){
+                if(type.value != "3"){
+                    $("#facilities_div").hide();
+                }else{
+                    $("#facilities_div").show();
+                }
+
+                $('#role').change(function(){
+                    if(type.value != "3"){
+                        $("#facilities_div").hide();
+                    }else{
+                        $("#facilities_div").show();
+                    }
+                });
+            }
+        });
+    </script>
+@endsection

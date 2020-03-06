@@ -18,6 +18,11 @@ class AddForeignKeyToFacilicies extends Migration
               ->references('lga_code')->on('lgas')
               ->onUpdate('cascade')
               ->onDelete('set null');
+
+            $table->foreign('created_by')
+              ->references('id')->on('users')
+              ->onUpdate('cascade')
+              ->onDelete('set null');
         });
     }
 
@@ -26,6 +31,7 @@ class AddForeignKeyToFacilicies extends Migration
         Schema::table('facilities', function (Blueprint $table) {
             $table->dropForeign(['state_code']);
             $table->dropForeign(['lga_code']);
+            $table->dropForeign(['created_by']);
         });
     }
 }

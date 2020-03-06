@@ -1,9 +1,11 @@
-<form method="POST" novalidate="novalidate" action="{{ route('users.store') }}">
+<form method="POST" novalidate="novalidate" action="{{ route('users.update', $user->id) }}">
     @csrf
-    <div class="form-row">
+    {{method_field('PUT')}}  
+
+    <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Full Name:</label>
-            <input required name="name" value='{{ old("name") }}' type="text" class="form-control" placeholder="Full Name" autofocus>
+            <input required name="name" value='{{ old("name", (isset($user)) ? $user->name : "") }}' type="text" class="form-control" placeholder="Full Name" autofocus>
 
             @if($errors->has('name'))
                 <strong class="text-danger">{{ $errors->first('name') }}</strong>
@@ -14,8 +16,8 @@
             <label>Sex:</label>
             <select required class="form-control m-select2" id="kt_select2_sex" name="sex">
                 <option></option>
-                <option value="male" @if(old("sex") == "male") {{ "selected" }} @endif>Male</option>
-                <option value="female" @if(old("sex") == "female") {{ "selected" }} @endif>Female</option>
+                <option value="male" @if(old("sex", (isset($user)) ? $user->sex : "") == "male") {{ "selected" }} @endif>Male</option>
+                <option value="female" @if(old("sex", (isset($user)) ? $user->sex : "") == "female") {{ "selected" }} @endif>Female</option>
             </select>
             @if($errors->has('sex'))
                 <strong class="text-danger">{{ $errors->first('sex') }}</strong>
@@ -23,10 +25,10 @@
         </div>
     </div>
 
-    <div class="form-row">
+    <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Email Address:</label>
-            <input required name="email" value="{{ old('email') }}" type="text" class="form-control" placeholder="Email Address" autofocus>
+            <input required name="email" value="{{ old('email', (isset($user)) ? $user->email : "") }}" type="text" class="form-control" placeholder="Email Address" autofocus>
             @if($errors->has('email'))
                 <strong class="text-danger">{{ $errors->first('email') }}</strong>
             @endif
@@ -34,18 +36,18 @@
 
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Phone Number</label>
-            <input required name="phone" value="{{ old('phone') }}" type="text" class="form-control" placeholder="Phone" autofocus>
+            <input required name="phone" value="{{ old('phone', (isset($user)) ? $user->phone : "") }}" type="text" class="form-control" placeholder="Phone" autofocus>
             @if($errors->has('phone'))
                 <strong class="text-danger">{{ $errors->first('phone') }}</strong>
             @endif
         </div>
     </div>
 
-    <div class="form-row">
+    <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Address</label>
 
-            <textarea required class="form-control" name="address">{{ old('address') }}</textarea>
+            <textarea required class="form-control" name="address">{{ old('address', (isset($user)) ? $user->address : "") }}</textarea>
             @if($errors->has('address'))
                 <strong class="text-danger">{{ $errors->first('address') }}</strong>
             @endif
@@ -53,10 +55,10 @@
 
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Role</label>
-            <select required class="form-control m-select2" id="kt_select2_role" name="role">
+            <select required class="form-control m-select2" id="role" name="role">
                 <option></option>
-                @foreach($facilities as $role)
-                    <option @if (old('role') == $role->id) {{ 'selected' }} @endif value="{{ $role->id }}">{{ $role->display_name }}</option>
+                @foreach($roles as $role)
+                    <option @if(old('role', (isset($user)) ? $user->sex : "") == $role->id) {{ 'selected' }} @endif value="{{ $role->id }}">{{ $role->display_name }}</option>
                 @endforeach
             </select>
             @if($errors->has('role'))
@@ -65,13 +67,13 @@
         </div>
     </div>
 
-    <div class="form-row">
+    <div class="row" id="facilities_div">
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-3 mb-3">
             <label>Facility</label>
-            <select required class="form-control m-select2" id="kt_select2_role" name="role">
+            <select required class="form-control m-select2" name="facility" id="facility">
                 <option></option>
                 @foreach($facilities as $facility)
-                    <option @if (old('facility') == $facility->id) {{ 'selected' }} @endif value="{{ $facility->id }}">{{ $facility->name }}</option>
+                    <option @if (old('facility', (isset($user)) ? $user->facility : "") == $facility->id) {{ 'selected' }} @endif value="{{ $facility->id }}">{{ $facility->name }}</option>
                 @endforeach
             </select>
             @if($errors->has('facility'))

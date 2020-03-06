@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Events\UserCreated;
+use App\Model\Facility;
 
 class UserController extends Controller
 {
@@ -21,8 +22,9 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
+        $facilities = Facility::all();
 
-        return view('pages.users.create', compact('roles'));
+        return view('pages.users.create', compact('roles', 'facilities'));
     }
 
     public function store(Request $request)
@@ -48,8 +50,9 @@ class UserController extends Controller
             'sex.required' => "Please select user's gender",
         ];
 
-        if($request->role == "facility"){
+        if($request->role == "3"){
             $rules['facility'] = "required";
+            $customMessages['facility.required'] = "Please select the user's facility";
         }
 
         $this->validate($request, $rules, $customMessages);
@@ -59,19 +62,17 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'created_by' => auth()->user()->owner->id,
+            'created_by' => auth()->user()->id,
             'employee_id'=> $request->employee_id,
             'sex'=> $request->sex,
             'address' => $request->address,
             'phone' => $request->phone,
+            'facility_id' => $request->facility,
             'password' => Hash::make($password),
-            'typeable_id' => $admin_user->id,
-			'typeable_type' => get_class($admin_user),
-            'email_verified_at' => now(),
         ]);
 
         //Assign role to the user
-        $user->assignRole($request->role);
+        $user->attachRole($request->role);
 
         //Throw the admin created event
         event(new UserCreated($user, $password));
@@ -84,8 +85,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         $roles = Role::all();
+        $facilities = Facility::all();
 
-        return view('pages.users.edit', compact('roles', 'user'));
+        return view('pages.users.edit', compact('roles', 'user', 'facilities'));
     }
 
     public function update(Request $request, User $user)

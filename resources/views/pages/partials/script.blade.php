@@ -37,9 +37,9 @@
     <script src="{{ asset('js/metisMenu/metisMenu-active.js') }}"></script>
     <!-- morrisjs JS
 		============================================ -->
-    <script src="{{ asset('js/morrisjs/raphael-min.js') }}"></script>
+    {{-- <script src="{{ asset('js/morrisjs/raphael-min.js') }}"></script>
     <script src="{{ asset('js/morrisjs/morris.js') }}"></script>
-    <script src="{{ asset('js/morrisjs/morris-active.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/morris-active.js') }}"></script> --}}
     <!-- morrisjs JS
 		============================================ -->
     <script src="{{ asset('js/sparkline/jquery.sparkline.min.js') }}"></script>

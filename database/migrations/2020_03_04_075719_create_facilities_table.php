@@ -12,6 +12,7 @@ class CreateFacilitiesTable extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('state_code')->nullable();
             $table->unsignedInteger('lga_code')->nullable();
 
