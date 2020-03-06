@@ -9,11 +9,15 @@ use App\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Events\UserCreated;
 use App\Model\Facility;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
 	public function index()
     {
+        // SHA512(merchantId+serviceTypeId+orderId+totalAmount+apiKey)
+        // dd(hash('sha512', '2547164430731221028200001946'));
+
         $users = User::paginate(10);
 
         return view('pages.users.list', compact("users"));
@@ -72,7 +76,7 @@ class UserController extends Controller
         ]);
 
         //Assign role to the user
-        $user->attachRole($request->role);
+        $user->syncRoles([$request->role]);
 
         //Throw the admin created event
         event(new UserCreated($user, $password));
@@ -99,11 +103,6 @@ class UserController extends Controller
                 Rule::unique('users')->ignore($user->id),
             ],
 
-            'employee_id' => [
-                'required',
-                Rule::unique('users')->ignore($user->id),
-            ],
-
             'name' => 'required',
             'phone' => 'required|phone:AUTO,NG',
             'address' => 'required',
@@ -112,18 +111,21 @@ class UserController extends Controller
         ];
 
         $customMessages = [
-            'name.required' => 'Please provide the staff\'s name.',
-            'email.required' => 'Please provide the staff\'s email.',
-            'email.unique' => 'A staff with thesame email already exist.',
-            'email.email' => 'Please provide a valid staff email.',
-            'phone.required' => 'Please provide the staff\'s phone number.',
+            'name.required' => 'Please provide the user\'s name.',
+            'email.required' => 'Please provide the user\'s email.',
+            'email.unique' => 'A user with thesame email already exist.',
+            'email.email' => 'Please provide a valid user email.',
+            'phone.required' => 'Please provide the user\'s phone number.',
             'phone.phone' => 'Please provide a valid phone number.',
-            'address.required' => 'Please provide the staff\'s address.',
-            'role.required' => "Please select staff's role",
-            'employee_id.required' => 'Please provide the staff\'s ID.',
-            'employee_id.unique' => 'A staff with thesame ID already exist.',
-            'sex.required' => "Please select staff's gender",
+            'address.required' => 'Please provide the user\'s address.',
+            'role.required' => "Please select user's role",
+            'sex.required' => "Please select user's gender",
         ];
+
+        if($request->role == "3"){
+            $rules['facility'] = "required";
+            $customMessages['facility.required'] = "Please select the user's facility";
+        }
 
         $this->validate($request, $rules, $customMessages);
 
@@ -135,13 +137,14 @@ class UserController extends Controller
             'sex'=> $request->sex,
             'address' => $request->address,
             'phone' => $request->phone,
+            'facility_id' => $request->facility,
         ]);
 
-        $user->syncRoles($request->role);
+        $user->syncRoles([$request->role]);
 
         notify()->success("Successfully updated!");
 
-        return redirect()->route("user.index");
+        return redirect()->route("users.index");
     }
 
     public function destroy(User $user)

@@ -1,6 +1,6 @@
-<form method="POST" novalidate="novalidate" action="{{ route('users.update', $user->id) }}">
+<form method="POST" novalidate="novalidate" action="{{ (isset($user)) ? route('users.update', $user->id):route('users.store') }}">
     @csrf
-    {{method_field('PUT')}}  
+    {{ (isset($user)) ? method_field('PUT'):"" }}
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
@@ -58,7 +58,7 @@
             <select required class="form-control m-select2" id="role" name="role">
                 <option></option>
                 @foreach($roles as $role)
-                    <option @if(old('role', (isset($user)) ? $user->sex : "") == $role->id) {{ 'selected' }} @endif value="{{ $role->id }}">{{ $role->display_name }}</option>
+                    <option @if(old('role', (isset($user)) ? $user->roles()->first()->id : "") == $role->id) {{ 'selected' }} @endif value="{{ $role->id }}">{{ $role->display_name }}</option>
                 @endforeach
             </select>
             @if($errors->has('role'))
@@ -73,7 +73,7 @@
             <select required class="form-control m-select2" name="facility" id="facility">
                 <option></option>
                 @foreach($facilities as $facility)
-                    <option @if (old('facility', (isset($user)) ? $user->facility : "") == $facility->id) {{ 'selected' }} @endif value="{{ $facility->id }}">{{ $facility->name }}</option>
+                    <option @if (old('facility', (isset($user)) ? $user->facility_id : "") == $facility->id) {{ 'selected' }} @endif value="{{ $facility->id }}">{{ $facility->name }}</option>
                 @endforeach
             </select>
             @if($errors->has('facility'))
@@ -83,7 +83,7 @@
     </div>
 
     <div class="payment-adress mt-3">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">{{ (isset($user)) ? 'Update':'Create' }}</button>
         <a href="{{ route("users.index") }}" class="btn btn-default">Cancel</a>
     </div>
 </form>    
