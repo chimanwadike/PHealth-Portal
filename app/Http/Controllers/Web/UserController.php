@@ -30,7 +30,6 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'employee_id' => 'required|unique:admin_users,employee_id',
             'phone' => 'required|phone:AUTO,NG',
             'address' => 'required',
             'role' => 'required',
@@ -38,18 +37,20 @@ class UserController extends Controller
         ];
 
         $customMessages = [
-            'name.required' => 'Please provide the staff\'s name.',
-            'email.required' => 'Please provide the staff\'s email.',
-            'email.unique' => 'A staff with thesame email already exist.',
-            'email.email' => 'Please provide a valid staff email.',
-            'phone.required' => 'Please provide the staff\'s phone number.',
+            'name.required' => 'Please provide the user\'s name.',
+            'email.required' => 'Please provide the user\'s email.',
+            'email.unique' => 'A user with thesame email already exist.',
+            'email.email' => 'Please provide a valid user email.',
+            'phone.required' => 'Please provide the user\'s phone number.',
             'phone.phone' => 'Please provide a valid phone number.',
-            'address.required' => 'Please provide the staff\'s address.',
-            'role.required' => "Please select staff's role",
-            'employee_id.required' => 'Please provide the staff\'s ID.',
-            'employee_id.unique' => 'A staff with thesame ID already exist.',
-            'sex.required' => "Please select staff's gender",
+            'address.required' => 'Please provide the user\'s address.',
+            'role.required' => "Please select user's role",
+            'sex.required' => "Please select user's gender",
         ];
+
+        if($request->role == "facility"){
+            $rules['facility'] = "required";
+        }
 
         $this->validate($request, $rules, $customMessages);
 

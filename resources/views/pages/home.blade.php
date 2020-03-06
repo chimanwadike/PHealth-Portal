@@ -28,5 +28,13 @@
 @endsection
 
 @section('content')
-	
+	<div class="single-pro-review-area mt-t-30 mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

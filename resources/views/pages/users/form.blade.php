@@ -11,15 +11,14 @@
         </div>
 
         <div class="col-lg-6 col-md-6 col-xs-12 mt-3">
-            <label>Role</label>
-            <select required class="form-control m-select2" id="kt_select2_role" name="role">
+            <label>Sex:</label>
+            <select required class="form-control m-select2" id="kt_select2_sex" name="sex">
                 <option></option>
-                @foreach($roles as $role)
-                    <option @if (old('role') == $role->id) {{ 'selected' }} @endif value="{{ $role->id }}">{{ $role->display_name }}</option>
-                @endforeach
+                <option value="male" @if(old("sex") == "male") {{ "selected" }} @endif>Male</option>
+                <option value="female" @if(old("sex") == "female") {{ "selected" }} @endif>Female</option>
             </select>
-            @if($errors->has('role'))
-                <strong class="text-danger">{{ $errors->first('role') }}</strong>
+            @if($errors->has('sex'))
+                <strong class="text-danger">{{ $errors->first('sex') }}</strong>
             @endif
         </div>
     </div>
@@ -43,7 +42,7 @@
     </div>
 
     <div class="form-row">
-        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3 mb-3">
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Address</label>
 
             <textarea required class="form-control" name="address">{{ old('address') }}</textarea>
@@ -52,18 +51,32 @@
             @endif
         </div>
 
-        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3 mb-3">
-            <div class="form-group">
-                <label>Sex:</label>
-                <select required class="form-control m-select2" id="kt_select2_sex" name="sex">
-                    <option></option>
-                    <option value="male" @if(old("sex") == "male") {{ "selected" }} @endif>Male</option>
-                    <option value="female" @if(old("sex") == "female") {{ "selected" }} @endif>Female</option>
-                </select>
-                @if($errors->has('sex'))
-                    <strong class="text-danger">{{ $errors->first('sex') }}</strong>
-                @endif
-            </div>
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
+            <label>Role</label>
+            <select required class="form-control m-select2" id="kt_select2_role" name="role">
+                <option></option>
+                @foreach($facilities as $role)
+                    <option @if (old('role') == $role->id) {{ 'selected' }} @endif value="{{ $role->id }}">{{ $role->display_name }}</option>
+                @endforeach
+            </select>
+            @if($errors->has('role'))
+                <strong class="text-danger">{{ $errors->first('role') }}</strong>
+            @endif
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-3 mb-3">
+            <label>Facility</label>
+            <select required class="form-control m-select2" id="kt_select2_role" name="role">
+                <option></option>
+                @foreach($facilities as $facility)
+                    <option @if (old('facility') == $facility->id) {{ 'selected' }} @endif value="{{ $facility->id }}">{{ $facility->name }}</option>
+                @endforeach
+            </select>
+            @if($errors->has('facility'))
+                <strong class="text-danger">{{ $errors->first('facility') }}</strong>
+            @endif
         </div>
     </div>
 
