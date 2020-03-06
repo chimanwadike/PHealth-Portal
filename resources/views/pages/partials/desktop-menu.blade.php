@@ -16,35 +16,35 @@
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li>
-                        <a title="Landing Page" href="events.html" aria-expanded="false">
+                        <a title="Landing Page" href="{{ route("home") }}" aria-expanded="false">
                             <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Home</span>
                         </a>
                     </li>
 
                     <li>
-                        <a title="Landing Page" href="events.html" aria-expanded="false">
+                        <a title="Landing Page" href="{{ route('users.index') }}" aria-expanded="false">
                             <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Users</span>
                         </a>
                     </li>
 
                     <li>
-                        <a title="Landing Page" href="events.html" aria-expanded="false">
+                        <a title="Landing Page" href="{{ route('facilities.index') }}" aria-expanded="false">
                             <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Facilities</span>
                         </a>
                     </li>
 
                     <li>
-                        <a title="Landing Page" href="events.html" aria-expanded="false">
+                        <a title="Landing Page" href="{{ route('clients.index') }}" aria-expanded="false">
                             <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Clients</span>
                         </a>
                     </li>
 
                     <li>
-                        <a title="Landing Page" href="events.html" aria-expanded="false">
+                        <a title="Landing Page" href="{{-- {{ route() }} --}}" aria-expanded="false">
                             <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Profile</span>
                         </a>

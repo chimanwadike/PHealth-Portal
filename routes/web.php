@@ -21,7 +21,9 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 	Route::get('/home', 'HomeController@index')->name('home');
+	Route::resource('/users', 'Web\UserController');
     Route::resource('/facilities', 'Web\FacilityController');
+    Route::resource('/clients', 'Web\ClientController');
 });
 
 Auth::routes();
