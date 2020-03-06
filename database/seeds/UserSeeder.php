@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => "Nuhu Ibrahim",
             'email' => "contactnuhuibrahim@gmail.com",
-            'password' => '$2y$10$mC6.KsnYmkVuNtr6bwIeB.l9TZSbS/u/KrnJl6l/RmjmhRhRqx6x6',
+            'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', //secret
         ]);
 
         $query = 'INSERT INTO `role_user` (`role_id`, `user_type`, `user_id`) VALUES
