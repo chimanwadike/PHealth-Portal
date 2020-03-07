@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lga extends Model
 {
+	protected $guarded = [];
+	
 	public function facilities()
 	{
 		return $this->hasMany('App\Model\Facility', 'lga_code', 'lga_code');

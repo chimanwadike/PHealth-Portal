@@ -37,39 +37,56 @@
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <div class="profile-info-inner">
-                        <div class="text-center" >
-                            <img height="200px" width="200px" class="img-circle" src="{{ auth()->user()->user_profile }}" alt="" />
+                        <div class="text-center">
+                            <img style="width:200px !important; height:200px !important;" class="img-circle" src="{{ auth()->user()->user_profile }}" alt=""/>
+
+                            <div class="text-center mb-3">
+                               <div>
+                                    <label class="pointer avatar text-white d-flex justify-content-center align-items-center flex-column" id="upload-image">
+                                        <span class="btn btn-primary rounded-pill px-4 mt-2"><span class="fa fa-camera text-white"></span> Change Picture</span>
+                                        <form id="photo-upload" enctype="multipart\form-data">
+                                            <input id='select' type="file" style="display: none;" name="image">   
+                                        </form>
+                                    </label>
+                               </div>
+                            </div>
+
+                            @if ($errors->has('avatar'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('avatar') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="profile-details-hr">
                             <div class="row">
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-4">
                                     <div class="address-hr">
                                         <p><b>Name</b><br /> {{$user->name}}</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-4">
                                     <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
                                         <p><b>Role</b><br /> {{ $user->roles()->first()->display_name }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-4">
-                                    <div class="address-hr">
-                                        <p><b>Phone Number</b><br /> {{ $user->phone }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-4">
-                                    <div class="address-hr">
-                                        <p><b>Email</b><br /> {{$user->email}}</p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-4">
                                     <div class="address-hr">
                                         <p><b>Sex</b><br /> {{ ucfirst($user->sex)}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                    <div class="address-hr">
+                                        <p><b>Phone Number</b><br /> {{ $user->phone }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                    <div class="address-hr">
+                                        <p><b>Email</b><br /> {{$user->email}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +134,7 @@
           <div class="modal-body">
             <div class="row">
                 <div class="col-9 offset-1 ml-5">
-                    <img height="250" width="250" id="new-profile-photo" class="rounded-circle">
+                    <img style="width:250px;height:250px;" id="new-profile-photo" class="img-circle">
                 </div>
             </div>
           </div>

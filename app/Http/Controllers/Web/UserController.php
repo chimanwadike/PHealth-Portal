@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Events\UserCreated;
 use App\Model\Facility;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {

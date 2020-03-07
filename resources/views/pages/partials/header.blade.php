@@ -20,16 +20,16 @@
                                 <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                     <li class="nav-item">
                                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-											<img src="{{ asset('img/product/pro4.jpg') }}" alt="" />
+											<img src="{{ auth()->user()->user_profile }}" alt="" />
 											<span class="admin-name">
-                                                Prof.Anderson
+                                                {{ auth()->user()->name }}
                                             </span>
 											<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 										</a>
 
                                         <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                             <li>
-                                                <a href="#">
+                                                <a href="{{ route("my_profile") }}">
                                                     <span class="edu-icon edu-user-rounded author-log-ic"></span>
                                                     My Profile
                                                 </a>

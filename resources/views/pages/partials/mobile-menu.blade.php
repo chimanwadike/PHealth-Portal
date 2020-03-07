@@ -7,31 +7,31 @@
                     <nav id="dropdown">
                         <ul class="mobile-menu-nav">
                             <li>
-                                <a href="events.html">
+                                <a href="{{ route("home") }}">
                                     Home
                                 </a>
                             </li>
 
                             <li>
-                                <a href="events.html">
+                                <a href="{{ route("users.index") }}">
                                     Users
                                 </a>
                             </li>
 
                             <li>
-                                <a href="events.html">
+                                <a href="{{ route("facilities.index") }}">
                                     Facilities
                                 </a>
                             </li>
 
                             <li>
-                                <a href="events.html">
+                                <a href="{{ route("clients.index") }}">
                                     Clients
                                 </a>
                             </li>
 
                             <li>
-                                <a href="events.html">
+                                <a href="{{ route("my_profile") }}">
                                     Profile
                                 </a>
                             </li>

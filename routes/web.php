@@ -32,6 +32,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/update', 'Web\UserController@update')->name('profile.update');
         Route::get('/{user}', 'Web\UserController@others_profile')->name('others_profile');
     });
+
+    Route::prefix('ajax')->group(function () {
+        Route::post('/lga', 'Web\AjaxResourceController@getLga')->name('ajax.lga');
+    });
 });
 
 Auth::routes();

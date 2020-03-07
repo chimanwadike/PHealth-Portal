@@ -18,7 +18,8 @@ class CreateFacilitiesTable extends Migration
 
             $table->string('name');
             $table->string('code');
-            $table->string('contact_person');
+            $table->string('contact_person_name');
+            $table->string('contact_person_phone');
 
             $table->timestamps();
         });
