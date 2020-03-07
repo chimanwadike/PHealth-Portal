@@ -19,7 +19,7 @@
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
-                                        <span class="bread-blod">Add User</span>
+                                        <span class="bread-blod">Update User</span>
                                     </li>
                                 </ul>
                             </div>

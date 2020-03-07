@@ -20,8 +20,13 @@ class User extends Authenticatable
 
     public function uploaded_clients()
 	{
-		return $this->hasMany('App\Client', 'UserId', 'id');
+		return $this->hasMany('App\Model\Client', 'UserId', 'id');
 	}
+
+    public function facility()
+    {
+        return $this->belongsTo('App\Model\Facility');
+    }
 
     public function getUserProfileAttribute()
     {

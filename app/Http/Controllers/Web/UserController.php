@@ -160,7 +160,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        return view('pages.profile.my_profile', compact('user'));
+        return view('pages.users.profile', compact('user'));
     }
 
     public function others_profile(User $user)
@@ -168,7 +168,7 @@ class UserController extends Controller
         if($user == auth()->user()){
             return redirect()->route('my_profile');
         }else{
-            return view('pages.profile.others_profile', compact('user'));
+            return view('pages.users.profile', compact('user'));
         }
     }
 
@@ -197,7 +197,7 @@ class UserController extends Controller
 
     public function edit()
     {
-        return view('pages.profile.edit_profile');
+        return view('pages.users.profile.edit_my_profile');
     }
 
     public function update_self_profile(Request $request)
