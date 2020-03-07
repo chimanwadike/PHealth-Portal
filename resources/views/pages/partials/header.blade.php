@@ -20,7 +20,7 @@
                                 <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                     <li class="nav-item">
                                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-											<img src="img/product/pro4.jpg" alt="" />
+											<img src="{{ asset('img/product/pro4.jpg') }}" alt="" />
 											<span class="admin-name">
                                                 Prof.Anderson
                                             </span>

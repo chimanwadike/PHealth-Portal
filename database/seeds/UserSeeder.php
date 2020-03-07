@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
             'email' => "contactnuhuibrahim@gmail.com",
             'password' => '$2y$10$mC6.KsnYmkVuNtr6bwIeB.l9TZSbS/u/KrnJl6l/RmjmhRhRqx6x6',
             'created_by' => NULL,
-            'employee_id' => 'EMP000001',
             'sex' => 'male',
             'address' => 'Kaduna - Nigeria',
             'phone' => '+234 7061 151 982'

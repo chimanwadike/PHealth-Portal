@@ -37,10 +37,35 @@
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
-                        @include("pages.users.forms.create")
+                        @include("pages.users.form")
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            //Code to hide and show user selection field based on message type selection
+            const type = document.getElementById('role');
+
+            if(type != null){
+                if(type.value != "3"){
+                    $("#facilities_div").hide();
+                }else{
+                    $("#facilities_div").show();
+                }
+
+                $('#role').change(function(){
+                    if(type.value != "3"){
+                        $("#facilities_div").hide();
+                    }else{
+                        $("#facilities_div").show();
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

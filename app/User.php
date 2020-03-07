@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable, LaratrustUserTrait;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','profile_image', 'created_by', 'facility_id', 'sex', 'address', 'phone'
     ];
 
     protected $hidden = [
@@ -20,8 +20,13 @@ class User extends Authenticatable
 
     public function uploaded_clients()
 	{
-		return $this->hasMany('App\Client', 'UserId', 'id');
+		return $this->hasMany('App\Model\Client', 'UserId', 'id');
 	}
+
+    public function facility()
+    {
+        return $this->belongsTo('App\Model\Facility');
+    }
 
     public function getUserProfileAttribute()
     {

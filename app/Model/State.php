@@ -8,16 +8,16 @@ class State extends Model
 {
 	public function lgas()
 	{
-		return $this->hasMany('App\Lga', 'state_code', 'state_code');
+		return $this->hasMany('App\Model\Lga', 'state_code', 'state_code');
 	}
 
 	public function facilities()
 	{
-		return $this->hasMany('App\Facility', 'state_code', 'state_code');
+		return $this->hasMany('App\Model\Facility', 'state_code', 'state_code');
 	}
 
 	public function clients()
 	{
-		return $this->hasMany('App\Client', 'ClientState', 'id');
+		return $this->hasMany('App\Model\Client', 'ClientState', 'id');
 	}
 }

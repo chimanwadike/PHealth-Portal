@@ -8,36 +8,36 @@ class Client extends Model
 {
     public function user()
 	{
-		return $this->belongsTo('App\User', 'UserId', 'id');
+		return $this->belongsTo('App\Model\User', 'UserId', 'id');
 	}
 
 	public function facility()
 	{
-		return $this->belongsTo('App\Facility', 'FacilityId', 'id');
+		return $this->belongsTo('App\Model\Facility', 'FacilityId', 'id');
 	}
 
 	public function client_state()
 	{
-		return $this->belongsTo('App\State', 'ClientState', 'state_code');
+		return $this->belongsTo('App\Model\State', 'ClientState', 'state_code');
 	}
 
 	public function client_lga()
 	{
-		return $this->belongsTo('App\Lga', 'ClientLga', 'lga_code');
+		return $this->belongsTo('App\Model\Lga', 'ClientLga', 'lga_code');
 	}
 
 	public function referral_state()
 	{
-		return $this->belongsTo('App\State', 'ReferralState', 'state_code');
+		return $this->belongsTo('App\Model\State', 'ReferralState', 'state_code');
 	}
 
 	public function referral_lga()
 	{
-		return $this->belongsTo('App\Lga', 'ReferralLga', 'lga_code');
+		return $this->belongsTo('App\Model\Lga', 'ReferralLga', 'lga_code');
 	}
 
 	public function refered_to()
 	{
-		return $this->belongsTo('App\Facility', 'RefferedTo', 'id');
+		return $this->belongsTo('App\Model\Facility', 'RefferedTo', 'id');
 	}
 }

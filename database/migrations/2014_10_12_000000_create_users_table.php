@@ -16,12 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('facility_id')->nullable();
             
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('employee_id');
             $table->string('sex');
             $table->longText('address');
             $table->string('phone');
