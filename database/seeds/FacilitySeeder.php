@@ -20,7 +20,8 @@ class FacilitySeeder extends Seeder
 			'lga_code' => $state->lgas->first()->lga_code,
 			'name' => 'Gwagwalada Health Centre',
 			'code' => '12',
-			'contact_person' => 'Abdullahi Lawal',
+			'contact_person_name' => 'Abdullahi Lawal',
+            'contact_person_phone' => '07061151982',
 		]);
     }
 }

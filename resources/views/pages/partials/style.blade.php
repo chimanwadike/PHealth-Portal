@@ -1,3 +1,9 @@
+    <style type="text/css">
+        .empty-state svg {
+            width: 180px;
+            height: 180px;
+        }
+    </style>
 	<!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">

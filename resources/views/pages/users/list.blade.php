@@ -62,7 +62,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <img style="width: 80px; height: 80px:" class="img-circle" alt="Pic" src="{{ $user->user_profile }}">
+                                                <img style="width:80px; height:80px;" class="img-circle" alt="Pic" src="{{ $user->user_profile }}">
 
                                                 <h4 class="d-inline">{{ $user->name }}</h4>
                                                 <h6 class="text-muted">{{ $user->email }}</h6>

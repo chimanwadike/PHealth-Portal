@@ -58,6 +58,6 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <!-- tawk chat JS
 		============================================ -->
-    <script src="{{ asset('js/tawk-chat.js') }}"></script>
+    {{-- <script src="{{ asset('js/tawk-chat.js') }}"></script> --}}
 	@include('notify::messages')
 	@notifyJs

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Events\UserCreated;
 use App\Model\Facility;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -17,7 +18,6 @@ class UserController extends Controller
     {
         // SHA512(merchantId+serviceTypeId+orderId+totalAmount+apiKey)
         // dd(hash('sha512', '2547164430731221028200001946'));
-
         $users = User::paginate(10);
 
         return view('pages.users.list', compact("users"));

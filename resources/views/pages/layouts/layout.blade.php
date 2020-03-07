@@ -7,7 +7,8 @@
     <title>Dashboard | {{ env("APP_NAME") }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     @include("pages.partials.style")
     @yield("style")
 </head>
@@ -25,7 +26,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html">
+                        <a href="{{ route("home") }}">
                             <img class="main-logo" src="{{ asset('img/logo/logo.png') }}" alt="" />
                         </a>
                     </div>

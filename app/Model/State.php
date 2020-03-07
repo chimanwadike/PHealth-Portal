@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
+	protected $guarded = [];
+	
 	public function lgas()
 	{
 		return $this->hasMany('App\Model\Lga', 'state_code', 'state_code');
