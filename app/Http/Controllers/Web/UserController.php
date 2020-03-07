@@ -17,7 +17,11 @@ class UserController extends Controller
 	public function index()
     {
         // SHA512(merchantId+serviceTypeId+orderId+totalAmount+apiKey)
+        // RRR = O11615747 Api_key = 1946 merchantId = 254716 ServiceTypeId = 4430731 Order ID = 221028 Amount = 20000
+        // dd(hash('sha512', 'RRR+api_key+merchantId'));
+
         // dd(hash('sha512', '2547164430731221028200001946'));
+
         $users = User::paginate(10);
 
         return view('pages.users.list', compact("users"));
