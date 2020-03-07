@@ -20,7 +20,7 @@
                                 <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                     <li class="nav-item">
                                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-											<img src="{{ auth()->user()->user_profile }}" alt="" />
+											<img style="width:30px; height:30px;" src="{{ auth()->user()->user_profile }}" alt="" />
 											<span class="admin-name">
                                                 {{ auth()->user()->name }}
                                             </span>
