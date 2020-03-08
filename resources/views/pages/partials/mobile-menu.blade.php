@@ -12,18 +12,23 @@
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="{{ route("users.index") }}">
-                                    Users
-                                </a>
-                            </li>
+                            @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
+                                <li>
+                                    <a href="{{ route("users.index") }}">
+                                        Users
+                                    </a>
+                                </li>
+                            @endif
 
-                            <li>
-                                <a href="{{ route("facilities.index") }}">
-                                    Facilities
-                                </a>
-                            </li>
+                            @if(auth()->user()->hasRole('admin'))
+                                <li>
+                                    <a href="{{ route("facilities.index") }}">
+                                        Facilities
+                                    </a>
+                                </li>
+                            @endif
 
+                            
                             <li>
                                 <a href="{{ route("clients.index") }}">
                                     Clients
