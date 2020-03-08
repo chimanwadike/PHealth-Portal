@@ -53,5 +53,7 @@ class UserSeeder extends Seeder
         $query = 'INSERT INTO `role_user` (`role_id`, `user_type`, `user_id`) VALUES
                     (3, "App\\\User", 3)';
         DB::insert($query);
+
+        factory(App\User::class, 20)->create();
     }
 }
