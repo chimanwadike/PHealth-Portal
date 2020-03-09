@@ -40,21 +40,23 @@
                         <div class="text-center">
                             <img style="width:200px !important; height:200px !important;" class="img-circle" src="{{ auth()->user()->user_profile }}" alt=""/>
 
-                            <div class="text-center mb-3">
-                               <div>
-                                    <label class="pointer avatar text-white d-flex justify-content-center align-items-center flex-column" id="upload-image">
-                                        <span class="btn btn-primary rounded-pill px-4 mt-2"><span class="fa fa-camera text-white"></span> Change Picture</span>
-                                        <form id="photo-upload" enctype="multipart\form-data">
-                                            <input id='select' type="file" style="display: none;" name="image">   
-                                        </form>
-                                    </label>
-                               </div>
-                            </div>
+                            @if(auth()->user()->hasRole('admin'))
+                                <div class="text-center mb-3">
+                                   <div>
+                                        <label class="pointer avatar text-white d-flex justify-content-center align-items-center flex-column" id="upload-image">
+                                            <span class="btn btn-primary rounded-pill px-4 mt-2"><span class="fa fa-camera text-white"></span> Change Picture</span>
+                                            <form id="photo-upload" enctype="multipart\form-data">
+                                                <input id='select' type="file" style="display: none;" name="image">   
+                                            </form>
+                                        </label>
+                                   </div>
+                                </div>
 
-                            @if ($errors->has('avatar'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('avatar') }}</strong>
-                                </span>
+                                @if ($errors->has('avatar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                    </span>
+                                @endif
                             @endif
                         </div>
 

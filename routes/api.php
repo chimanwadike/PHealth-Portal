@@ -22,3 +22,5 @@ Route::post('/facilities', 'Api\FacilityController@facilities')->name('api.facil
 Route::post('/states', 'Api\StateController@states')->name('api.states');
 Route::post('/lgas', 'Api\LgaController@lgas')->name('api.lgas');
 Route::post('/state_lgas/{state}', 'Api\LgaController@states_lga')->name('api.states_lga');
+Route::post('/client/store', 'Api\ClientController@client_store')->name('api.client_store');
+Route::post('/client/store_bulk', 'Api\ClientController@client_store_bulk')->name('api.client_store_bulk');

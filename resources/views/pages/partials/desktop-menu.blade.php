@@ -22,19 +22,25 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a title="Landing Page" href="{{ route('users.index') }}" aria-expanded="false">
-                            <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
-                            <span class="mini-click-non">Users</span>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a title="Landing Page" href="{{ route('facilities.index') }}" aria-expanded="false">
-                            <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
-                            <span class="mini-click-non">Facilities</span>
-                        </a>
-                    </li>
+                    @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
+                        <li>
+                            <a title="Landing Page" href="{{ route('users.index') }}" aria-expanded="false">
+                                <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                                <span class="mini-click-non">Users</span>
+                            </a>
+                        </li>
+                    @endif
+
+
+                    @if(auth()->user()->hasRole('admin'))
+                        <li>
+                            <a title="Landing Page" href="{{ route('facilities.index') }}" aria-expanded="false">
+                                <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                                <span class="mini-click-non">Facilities</span>
+                            </a>
+                        </li>
+                    @endif
 
                     <li>
                         <a title="Landing Page" href="{{ route('clients.index') }}" aria-expanded="false">

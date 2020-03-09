@@ -10,8 +10,20 @@ class ClientController extends Controller
 {
 	public function index()
 	{
-		$clients = Client::paginate(10);
+		if(auth()->user()->hasRole('admin')){
+			$clients = Client::paginate(10);
 
-		return view('pages.clients.list', compact('clients'));
+			return view('pages.clients.list', compact('clients'));
+		}elseif(auth()->user()->hasRole('coordinator')){
+			$clients = Client::paginate(10);
+
+			return view('pages.clients.list', compact('clients'));
+		}elseif(auth()->user()->hasRole('facility')){
+			$clients = Client::paginate(10);
+
+			return view('pages.clients.list', compact('clients'));
+		}else{
+            abort(403);
+        }
     }
 }

@@ -37,13 +37,16 @@
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
-                        @if(count($users) > 0)
-                            <div class="mb-2">
-                                <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon"> 
-                                    <i class="fa fa-plus"></i>
-                                    New User
-                                </a>
-                            </div>
+                        
+                        @if(auth()->user()->hasRole('admin'))
+                            @if(count($users) > 0)
+                                <div class="mb-2">
+                                    <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon"> 
+                                        <i class="fa fa-plus"></i>
+                                        New User
+                                    </a>
+                                </div>
+                            @endif
                         @endif
 
                         @if(count($users) > 0)
@@ -53,6 +56,9 @@
                                         <th>SN</th>
                                         <th>User Information</th>
                                         <th>Role</th>
+                                        @if(auth()->user()->hasRole('coordinator'))
+                                            <th>Facility</th>
+                                        @endif
                                         <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
@@ -75,6 +81,14 @@
                                                 </h4>
                                             </td>
 
+                                            @if(auth()->user()->hasRole('coordinator'))
+                                                <td>
+                                                    <h4 class="text-muted">
+                                                        {{ $user->facility->name }}
+                                                    </h4>
+                                                </td>
+                                            @endif
+
                                             <td class="text-center">
                                                 <a type="button" href="{{ route("users.show", $user->id) }}" class="btn btn-primary btn-icon">
                                                     <i class="fa fa-edit">
@@ -96,10 +110,12 @@
                                     No users yet!
                                 </h3>
 
-                                <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon"> 
-                                    <i class="fa fa-plus"></i>
-                                    New User
-                                </a>
+                                @if(auth()->user()->hasRole('admin'))
+                                    <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon"> 
+                                        <i class="fa fa-plus"></i>
+                                        New User
+                                    </a>
+                                @endif
                             </div>
                         @endif
                     </div>
