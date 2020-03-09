@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
         User::truncate();
         DB::statement("SET FOREIGN_KEY_CHECKS=1");
 
-        $user = User::create([
+        $user1 = User::create([
             'name' => "Nuhu Ibrahim",
             'email' => "contactnuhuibrahim@gmail.com",
             'password' => '$2y$10$mC6.KsnYmkVuNtr6bwIeB.l9TZSbS/u/KrnJl6l/RmjmhRhRqx6x6',
@@ -22,10 +22,10 @@ class UserSeeder extends Seeder
         ]);
 
         $query = 'INSERT INTO `role_user` (`role_id`, `user_type`, `user_id`) VALUES
-                    (1, "App\\\User",'. $user->id .')';
+                    (1, "App\\\User",'. $user1->id .')';
         DB::insert($query);
         
-        $user = User::create([
+        $user2 = User::create([
             'name' => "Chima Chima",
             'email' => "contactchima@gmail.com",
             'password' => '$2y$10$mC6.KsnYmkVuNtr6bwIeB.l9TZSbS/u/KrnJl6l/RmjmhRhRqx6x6',
@@ -36,10 +36,10 @@ class UserSeeder extends Seeder
         ]);
 
         $query = 'INSERT INTO `role_user` (`role_id`, `user_type`, `user_id`) VALUES
-                    (2, "App\\\User",'. $user->id .')';
+                    (2, "App\\\User",'. $user2->id .')';
         DB::insert($query);
 
-        $user = User::create([
+        $user3 = User::create([
             'name' => "Chima Nuhu",
             'email' => "contactnuhu@gmail.com",
             'password' => '$2y$10$mC6.KsnYmkVuNtr6bwIeB.l9TZSbS/u/KrnJl6l/RmjmhRhRqx6x6',
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
         ]);
 
         $query = 'INSERT INTO `role_user` (`role_id`, `user_type`, `user_id`) VALUES
-                    (3, "App\\\User",'. $user->id .')';
+                    (3, "App\\\User",'. $user3->id .')';
         DB::insert($query);
 
         factory(App\User::class, 20)->create();

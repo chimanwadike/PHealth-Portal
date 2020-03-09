@@ -19,7 +19,7 @@ class ClientController extends Controller
 
 			return view('pages.clients.list', compact('clients'));
 		}elseif(auth()->user()->hasRole('facility')){
-			$clients = Client::paginate(10);
+			$clients = auth()->user()->uploaded_clients->paginate(10);
 
 			return view('pages.clients.list', compact('clients'));
 		}else{
