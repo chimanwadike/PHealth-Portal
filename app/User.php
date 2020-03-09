@@ -20,7 +20,7 @@ class User extends Authenticatable
 
     public function uploaded_clients()
 	{
-		return $this->hasMany('App\Model\Client', 'UserId', 'id');
+		return $this->hasMany('App\Model\Client', 'user_id', 'id');
 	}
 
     public function facility()

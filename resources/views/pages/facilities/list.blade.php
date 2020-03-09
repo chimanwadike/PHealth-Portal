@@ -120,6 +120,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                {{ $facilities->links() }}
                             </table>
                         @else
                             <div class="empty-state text-center my-3">

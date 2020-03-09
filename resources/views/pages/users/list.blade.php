@@ -37,7 +37,6 @@
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
-                        
                         @if(auth()->user()->hasRole('admin'))
                             @if(count($users) > 0)
                                 <div class="mb-2">
@@ -102,6 +101,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                {{ $users->links() }}
                             </table>
                         @else
                             <div class="empty-state text-center my-3">

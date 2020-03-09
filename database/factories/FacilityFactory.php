@@ -8,7 +8,7 @@ use App\User;
 $factory->define(Facility::class, function (Faker $faker) {
     $count_user = User::all()->count();
     $count_state = State::all()->count();
-    $state = State::where('state_code', 1)->get()->first();
+    $state = State::where('state_code', rand(1, $count_state))->get()->first();
 
     return [
         'state_code' => $state->state_code,

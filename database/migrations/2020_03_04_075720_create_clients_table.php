@@ -10,7 +10,7 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->increments('Id');
+            $table->increments('id');
 
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('facility_id')->nullable();
@@ -69,8 +69,6 @@ class CreateClientsTable extends Migration
             $table->integer('facility_client_reported')->nullable();
             $table->string('eligibility_level', 50)->nullable();
             $table->integer('delete_flag')->nullable();
-            $table->datetime('create_date')->nullable();
-            $table->datetime('update_date')->nullable();
 
             $table->timestamps();
         });

@@ -35,7 +35,7 @@
     <div class="single-pro-review-area mt-t-30 mg-b-15">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
                         @if(count($clients) > 0)
                             <table class="table table-striped- table-bordered table-hover table-checkable" id="datatable">
@@ -43,10 +43,11 @@
                                     <tr>
                                         <th>SN</th>
                                         <th>Name</th>
-                                        <th>Code</th>
-                                        <th>Contact Person</th>
-                                        <th>Location</th>
-                                        <th>Created By</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                        <th>Phone</th>
+                                        <th>Facility</th>
+                                        <th>Uploaded By</th>
                                         <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
@@ -56,39 +57,31 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                {{ $facility->name }}
+                                                {{ $client->firstname }} {{ $client->surname }}
                                             </td>
 
                                             <td>
-                                                {{ $facility->code }}
+                                                {{ $client->age }}
                                             </td>
 
                                             <td>
-                                                <span class="d-block">
-                                                    Name: <span class="text-muted"> {{ $facility->contact_person_name }}</span>
-                                                </span><br>
-
-                                                <span>
-                                                    Phone: <span class="text-muted"> {{ $facility->contact_person_phone }}</span>
-                                                </span>
+                                                {{ ucfirst($client->sex) }}
                                             </td>
 
                                             <td>
-                                                <span class="d-block">
-                                                    State: <span class="text-muted"> {{ $facility->state->state_name }}</span>
-                                                </span><br>
-
-                                                <span>
-                                                    LGA: <span class="text-muted"> {{ $facility->lga->lga_name }}</span>
-                                                </span>
+                                                {{ $client->phone_number }}
                                             </td>
 
                                             <td>
-                                                @if($facility->created_by_)
-                                                    <a href="{{ route('others_profile', $facility->created_by_->id) }}">
+                                                {{ $client->facility->name }}
+                                            </td>
+
+                                            <td>
+                                                @if($client->user)
+                                                    <a href="{{ route('others_profile', $client->user->id) }}">
                                                         <span class="inline-block">
                                                             <strong> 
-                                                                {{ $facility->created_by_->name }} 
+                                                                {{ $client->user->name }}
                                                             </strong>
                                                         </span>
                                                     </a>
@@ -102,15 +95,14 @@
                                             </td>
 
                                             <td class="text-center">
-                                                <a type="button" href="{{ route('facilities.edit', $facility->id) }}" class="btn btn-primary btn-icon">
-                                                    <i class="fa fa-edit"></i>
+                                                <a type="button" href="{{ route('clients.show', $client->id) }}" class="btn btn-primary btn-icon">
+                                                    <i class="fa fa-eye"></i>
                                                 </a>
-
-                                                <a type="button" href="" class="btn btn-danger btn-icon" data-toggle="modal" data-target="#deleteModal" href="#" role="button" data-facilityId="{{ $facility->id }}"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                {{ $clients->links() }}
                             </table>
                         @else
                             <div class="empty-state text-center my-3">
