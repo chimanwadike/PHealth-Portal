@@ -24,7 +24,7 @@ class FacilitySeeder extends Seeder
             'contact_person_phone' => '07061151982',
 		]);
 
-        factory(App\User::class)->create();
+        //factory(App\User::class)->create();
         factory(App\Model\Facility::class, 20)->create();
     }
 }

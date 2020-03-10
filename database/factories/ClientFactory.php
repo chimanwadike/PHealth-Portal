@@ -30,5 +30,6 @@ $factory->define(Client::class, function (Faker $faker) {
         'sex' => $sex[rand(0, 1)],
         'address' => $faker->streetAddress,
         'phone_number' => $faker->phoneNumber,
+        'services' => $faker->jobTitle,
     ];
 });

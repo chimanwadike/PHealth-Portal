@@ -82,6 +82,7 @@ class ClientController extends Controller
 				'facility_client_reported' => $request->facility_client_reported,
 				'eligibility_level' => $request->eligibility_level,
 				'delete_flag' => $request->delete_flag,
+				'services' => $request->services,
 	        ]);
 
 	        return response()->json("".$client->id, 200);
@@ -158,6 +159,7 @@ class ClientController extends Controller
 					'facility_client_reported' => $client['facility_client_reported'],
 					'eligibility_level' => $client['eligibility_level'],
 					'delete_flag' => $client['delete_flag'],
+					'services' => $client['services'],
 		        ]);
 
 				$client_ids[] = $client_info->id;

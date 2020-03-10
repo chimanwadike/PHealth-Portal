@@ -69,6 +69,7 @@ class CreateClientsTable extends Migration
             $table->integer('facility_client_reported')->nullable();
             $table->string('eligibility_level', 50)->nullable();
             $table->integer('delete_flag')->nullable();
+            $table->longText('services')->nullable();
 
             $table->timestamps();
         });

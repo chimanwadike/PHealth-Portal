@@ -28,11 +28,47 @@
 @endsection
 
 @section('content')
-	<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="analytics-sparkle-area mt-0">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                	
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    @foreach(auth()->user()->weekly_clients_to_view() as $week)
+                        <div class="analytics-sparkle-line reso-mg-b-30 pb-0 pb-0">
+                            <div class="analytics-content">
+                                <h3>{{ $week['title'] }}</h3>
+                                @if($loop->iteration == 1)
+                                    <h1><span class="text-danger">{{ $week['count'] }}</span></h1>
+                                @else
+                                    <h2><span class="text-danger">{{ $week['count'] }}</span></h2>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="analytics-sparkle-line reso-mg-b-30 pb-0">
+                        <div class="analytics-content">
+                            <h2>Total clients today</h2>
+                            <h1><span class="text-danger">{{ auth()->user()->daily_clients_to_view() }}</span></h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    @foreach(auth()->user()->monthly_clients_to_view() as $month)
+                        <div class="analytics-sparkle-line reso-mg-b-30 pb-0 pb-0">
+                            <div class="analytics-content">
+                                <h3>{{ $month['title'] }} ({{ strtoupper($month['month']) }})</h3>
+
+                                @if($loop->iteration == 1)
+                                    <h1><span class="text-danger">{{ $month['count'] }}</span></h1>
+                                @else
+                                    <h2><span class="text-danger">{{ $month['count'] }}</span></h2>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
