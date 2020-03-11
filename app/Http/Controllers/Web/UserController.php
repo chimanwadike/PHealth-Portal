@@ -16,53 +16,17 @@ class UserController extends Controller
 {
 	public function index()
     {
-        $input = @file_get_contents("php://input");
-        $event = json_decode($input);
-        
-        $my_file = 'file.txt';
-        $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+        if(auth()->user()->hasRole('admin')){
+            $users = User::paginate(10);
 
-        $data = array(
-            'rrr => ' . $event[0]->rrr,
-            'amount => ' . $event[0]->amount,
-            'transactiondate => ' . $event[0]->transactiondate,
-            'payerName => ' . $event[0]->payerName,
-            'payerEmail => ' . $event[0]->payerEmail,
-            'payerPhoneNumber => ' . $event[0]->payerPhoneNumber,
-        );
+            return view('pages.users.list', compact("users"));
+        }elseif(auth()->user()->hasRole('coordinator')){
+            $users = User::whereRoleIs('facility')->paginate(10);
 
-        fwrite($handle, "\n");
-        fwrite($handle, implode("\n", $data));
-
-        fclose($handle);
-
-        dd("here");
-        return;
-
-        $rrr = $event[0]->rrr;
-        $amount = $event[0]->amount;
-        $date = $event[0]->transactiondate;
-        $payerName = $event[0]->payerName;
-        $payerEmail = $event[0]->payerEmail;
-        $payerPhoneNumber = $event[0]->payerPhoneNumber;
-
-        $query=mysqli_query($con,"insert into pay_log (payerName,payerPhoneNumber,payerEmail,amount,RRR,transactiondate)
-            values('$payerName','$payerPhoneNumber','$payerEmail','$amount','$rrr','$date')");
-
-            
-        return print("ok");
-
-        // if(auth()->user()->hasRole('admin')){
-        //     $users = User::paginate(10);
-
-        //     return view('pages.users.list', compact("users"));
-        // }elseif(auth()->user()->hasRole('coordinator')){
-        //     $users = User::whereRoleIs('facility')->paginate(10);
-
-        //     return view('pages.users.list', compact("users"));
-        // }else{
-        //     abort(403);
-        // }
+            return view('pages.users.list', compact("users"));
+        }else{
+            abort(403);
+        }
     }
 
     public function create()
