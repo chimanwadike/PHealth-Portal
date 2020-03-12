@@ -50,6 +50,47 @@
                     </li>
 
                     <li>
+                        <a class="has-arrow" href="all-professors.html" aria-expanded="false">
+                            <span class="educate-icon educate-professor icon-wrap"></span>
+                            <span class="mini-click-non">
+                                Clients
+                            </span>
+                        </a>
+
+                        <ul class="submenu-angle" aria-expanded="false">
+                            <li>
+                                <a href="{{ route("clients.index") }}">
+                                    <span class="mini-sub-pro">All Clients</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="all-professors.html">
+                                    <span class="mini-sub-pro">By User</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route("clients.facilities") }}">
+                                    <span class="mini-sub-pro">By Facility</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="edit-professor.html">
+                                    <span class="mini-sub-pro">By Refered Facility</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="professor-profile.html">
+                                    <span class="mini-sub-pro">By State/LGA</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
                         <a title="Landing Page" href="{{ route("my_profile") }}" aria-expanded="false">
                             <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Profile</span>

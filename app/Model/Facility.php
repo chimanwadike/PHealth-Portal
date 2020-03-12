@@ -20,7 +20,7 @@ class Facility extends Model
 
 	public function clients()
 	{
-		return $this->hasMany('App\Model\Client', 'FacilityId', 'id');
+		return $this->hasMany('App\Model\Client', 'facility_id', 'id');
 	}
 
 	public function created_by_()
