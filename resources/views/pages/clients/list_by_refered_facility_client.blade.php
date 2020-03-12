@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                 <div class="breadcome-heading">
-                                    <h3>Clients ({{ $user->name }})</h3>
+                                    <h3>Refered Clients ({{ $facility->name }})</h3>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

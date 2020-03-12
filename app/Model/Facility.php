@@ -23,6 +23,11 @@ class Facility extends Model
 		return $this->hasMany('App\Model\Client', 'facility_id', 'id');
 	}
 
+	public function refered_clients()
+	{
+		return $this->hasMany('App\Model\Client', 'reffered_to', 'id');
+	}
+
 	public function created_by_()
 	{
 		return $this->belongsTo('App\User', 'created_by', 'id');

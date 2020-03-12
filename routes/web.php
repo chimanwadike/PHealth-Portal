@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/clients', 'Web\ClientController');
     Route::get('/clients-by-facility', 'Web\ClientController@clients_by_facility')->name("clients.facilities");
     Route::get('/clients-by-facility/{facility}', 'Web\ClientController@clients_by_facility_show')->name("clients.facilities.show");
+    Route::get('/clients-by-refered-facility', 'Web\ClientController@clients_by_refered_facility')->name("clients.refered_facilities");
+    Route::get('/clients-by-refered-facility/{facility}', 'Web\ClientController@clients_by_refered_facility_show')->name("clients.refered_facilities.show");
     Route::get('/clients-by-user', 'Web\ClientController@clients_by_user')->name("clients.users");
     Route::get('/clients-by-user/{user}', 'Web\ClientController@clients_by_user_show')->name("clients.users.show");
 

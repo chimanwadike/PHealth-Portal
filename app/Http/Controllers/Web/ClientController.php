@@ -51,6 +51,28 @@ class ClientController extends Controller
         }
     }
 
+    public function clients_by_refered_facility()
+	{
+		if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator')){
+			$facilities = Facility::paginate(10);
+
+			return view('pages.clients.list_by_refered_facility', compact('facilities'));
+		}else{
+            abort(403);
+        }
+    }
+
+    public function clients_by_refered_facility_show(Facility $facility)
+	{
+		if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator')){
+			$clients = $facility->refered_clients->paginate(10);
+
+			return view('pages.clients.list_by_refered_facility_client', compact('clients', 'facility'));
+		}else{
+            abort(403);
+        }
+    }
+
     public function clients_by_user()
 	{
 		if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator')){

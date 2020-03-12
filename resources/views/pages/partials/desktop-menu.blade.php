@@ -70,7 +70,7 @@
                             </li>
 
                             <li>
-                                <a href="edit-professor.html">
+                                <a href="{{ route("clients.refered_facilities") }}">
                                     <span class="mini-sub-pro">By Refered Facility</span>
                                 </a>
                             </li>
