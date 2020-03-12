@@ -30,6 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients-by-refered-facility/{facility}', 'Web\ClientController@clients_by_refered_facility_show')->name("clients.refered_facilities.show");
     Route::get('/clients-by-user', 'Web\ClientController@clients_by_user')->name("clients.users");
     Route::get('/clients-by-user/{user}', 'Web\ClientController@clients_by_user_show')->name("clients.users.show");
+    Route::get('/clients-by-state', 'Web\ClientController@clients_by_state')->name("clients.states");
+    Route::get('/clients-by-state/{state}', 'Web\ClientController@clients_by_state_show')->name("clients.states.show");
+    Route::get('/clients-by-lga', 'Web\ClientController@clients_by_lga')->name("clients.lgas");
+    Route::get('/clients-by-lga/{lga}', 'Web\ClientController@clients_by_lga_show')->name("clients.lgas.show");
 
     Route::prefix('profile')->group(function () {
         Route::get('/', 'Web\UserController@my_profile')->name('my_profile');

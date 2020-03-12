@@ -20,6 +20,6 @@ class Lga extends Model
 
 	public function clients()
 	{
-		return $this->hasMany('App\Model\Client', 'ClientLga', 'id');
+		return $this->hasMany('App\Model\Client', 'client_lga_code', 'lga_code');
 	}
 }

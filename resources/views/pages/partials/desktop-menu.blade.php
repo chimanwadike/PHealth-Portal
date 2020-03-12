@@ -76,8 +76,14 @@
                             </li>
 
                             <li>
-                                <a href="professor-profile.html">
-                                    <span class="mini-sub-pro">By State/LGA</span>
+                                <a href="{{ route("clients.states") }}">
+                                    <span class="mini-sub-pro">By State</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route("clients.lgas") }}">
+                                    <span class="mini-sub-pro">By LGA</span>
                                 </a>
                             </li>
                         </ul>
