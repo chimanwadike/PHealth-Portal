@@ -58,7 +58,7 @@
                             </li>
 
                             <li>
-                                <a href="all-professors.html">
+                                <a href="{{ route("clients.users") }}">
                                     <span class="mini-sub-pro">By User</span>
                                 </a>
                             </li>
