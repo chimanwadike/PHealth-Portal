@@ -38,4 +38,15 @@ class ClientController extends Controller
             abort(403);
         }
     }
+
+    public function clients_by_facility_show(Facility $facility)
+	{
+		if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator')){
+			$clients = $facility->clients->paginate(10);
+
+			return view('pages.clients.list_by_facility_client', compact('clients', 'facility'));
+		}else{
+            abort(403);
+        }
+    }
 }

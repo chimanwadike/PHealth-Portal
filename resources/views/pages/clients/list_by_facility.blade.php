@@ -72,7 +72,7 @@
                                             </td>
 
                                             <td class="text-center">
-                                                <a type="button" href="{{ route('facilities.edit', $facility->id) }}" class="btn btn-primary btn-icon">
+                                                <a type="button" href="{{ route('clients.facilities.show', $facility->id) }}" class="btn btn-primary btn-icon">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>

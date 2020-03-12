@@ -43,13 +43,6 @@
                     @endif
 
                     <li>
-                        <a title="Landing Page" href="{{ route('clients.index') }}" aria-expanded="false">
-                            <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
-                            <span class="mini-click-non">Clients</span>
-                        </a>
-                    </li>
-
-                    <li>
                         <a class="has-arrow" href="all-professors.html" aria-expanded="false">
                             <span class="educate-icon educate-professor icon-wrap"></span>
                             <span class="mini-click-non">
