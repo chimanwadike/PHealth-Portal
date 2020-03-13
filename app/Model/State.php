@@ -20,6 +20,6 @@ class State extends Model
 
 	public function clients()
 	{
-		return $this->hasMany('App\Model\Client', 'ClientState', 'id');
+		return $this->hasMany('App\Model\Client', 'client_state_code', 'state_code');
 	}
 }
