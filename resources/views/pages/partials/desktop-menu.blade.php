@@ -44,7 +44,7 @@
 
                     @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
                         <li>
-                            <a class="has-arrow" href="all-professors.html" aria-expanded="false">
+                            <a class="has-arrow" aria-expanded="false">
                                 <span class="educate-icon educate-professor icon-wrap"></span>
                                 <span class="mini-click-non">
                                     Clients

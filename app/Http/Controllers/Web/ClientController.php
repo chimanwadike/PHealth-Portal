@@ -142,4 +142,13 @@ class ClientController extends Controller
             abort(403);
         }
     }
+
+    public function show(Client $client)
+	{
+		if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator')){
+			return view('pages.clients.profile', compact('client'));
+		}else{
+            abort(403);
+        }
+    }
 }
