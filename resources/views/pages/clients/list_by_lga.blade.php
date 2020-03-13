@@ -88,11 +88,11 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            // $('#datatable').DataTable({
-            //     search: true,
-            //     paging: false,
-            //     info: false
-            // });
+            $('#datatable').DataTable({
+                search: true,
+                paging: false,
+                info: false
+            });
         });
     </script>
 @endsection

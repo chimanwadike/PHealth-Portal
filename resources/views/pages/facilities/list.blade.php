@@ -175,11 +175,11 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            // $('#datatable').DataTable({
-            //     search: true,
-            //     paging: false,
-            //     info: false
-            // });
+            $('#datatable').DataTable({
+                search: true,
+                paging: false,
+                info: false
+            });
 
             $('#deleteModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal

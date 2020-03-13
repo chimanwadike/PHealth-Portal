@@ -48,7 +48,7 @@
                                         <th>Phone</th>
                                         <th>Facility</th>
                                         <th>Uploaded By</th>
-                                        {{-- <th class="text-center">Actions</th> --}}
+                                        <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
 
@@ -94,11 +94,11 @@
                                                 @endif
                                             </td>
 
-                                            {{-- <td class="text-center">
+                                            <td class="text-center">
                                                 <a type="button" href="{{ route('clients.show', $client->id) }}" class="btn btn-primary btn-icon">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -122,11 +122,11 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            // $('#datatable').DataTable({
-            //     search: true,
-            //     paging: false,
-            //     info: false
-            // });
+            $('#datatable').DataTable({
+                search: true,
+                paging: false,
+                info: false
+            });
         });
     </script>
 @endsection
