@@ -26,7 +26,7 @@ class LoginController extends Controller
         	if(Auth::attempt($userdata)){
                 return response()->json([
                     'code' => '01',
-                    'data' => User::where('email', $request->username)->get()->first(),
+                    'data' => User::where('email', $request->username)->with('facility')->get()->first(),
                     'message' => 'Login Successful'
                 ], 200);
         	}else{

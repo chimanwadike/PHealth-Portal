@@ -7,6 +7,7 @@
 
             <strong>
                 <a href="{{ route("home") }}">
+
                     <img src="{{ asset('img/logo/logosn.png') }}" alt="" />
                 </a>
             </strong>
@@ -17,7 +18,7 @@
                 <ul class="metismenu" id="menu1">
                     <li>
                         <a title="Landing Page" href="{{ route("home") }}" aria-expanded="false">
-                            <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                            <span class="fa fa-home icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Home</span>
                         </a>
                     </li>
@@ -26,7 +27,7 @@
                     @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
                         <li>
                             <a title="Landing Page" href="{{ route('users.index') }}" aria-expanded="false">
-                                <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                                <span class="fa fa-user-o icon-wrap" aria-hidden="true"></span>
                                 <span class="mini-click-non">Users</span>
                             </a>
                         </li>
@@ -36,7 +37,7 @@
                     @if(auth()->user()->hasRole('admin'))
                         <li>
                             <a title="Landing Page" href="{{ route('facilities.index') }}" aria-expanded="false">
-                                <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                                <span class="fa fa-hospital-o icon-wrap" aria-hidden="true"></span>
                                 <span class="mini-click-non">Facilities</span>
                             </a>
                         </li>
@@ -45,7 +46,7 @@
                     @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
                         <li>
                             <a class="has-arrow" aria-expanded="false">
-                                <span class="educate-icon educate-professor icon-wrap"></span>
+                                <span class="fa fa-group icon-wrap"></span>
                                 <span class="mini-click-non">
                                     Clients
                                 </span>
@@ -92,7 +93,7 @@
                     @elseif(auth()->user()->hasRole('facility'))
                         <li>
                             <a title="Landing Page" href="{{ route('clients.index') }}" aria-expanded="false">
-                                <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                                <span class="fa fa-group icon-wrap" aria-hidden="true"></span>
                                 <span class="mini-click-non">Clients</span>
                             </a>
                         </li>
@@ -100,7 +101,7 @@
 
                     <li>
                         <a title="Landing Page" href="{{ route("my_profile") }}" aria-expanded="false">
-                            <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
+                            <span class="fa fa-address-book-o icon-wrap" aria-hidden="true"></span>
                             <span class="mini-click-non">Profile</span>
                         </a>
                     </li>
