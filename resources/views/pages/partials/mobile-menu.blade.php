@@ -12,6 +12,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a title="Landing Page" href="#" aria-expanded="false">
+                                    <span class="icon-wrap" aria-hidden="true"></span>
+                                    <span class="mini-click-non">Dashboards</span>
+                                </a>
+                            </li>
+
                             @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
                                 <li>
                                     <a href="{{ route("users.index") }}">
@@ -74,6 +81,14 @@
                                         </li>
                                     </ul>
                                 </li>
+
+                                <li>
+                                    <a title="Download Client Line List" href="#" aria-expanded="false">
+                                        <span class="icon-wrap" aria-hidden="true"></span>
+                                        <span class="mini-click-non">Download Clients</span>
+                                    </a>
+                                </li>
+
                             @elseif(auth()->user()->hasRole('facility'))
                                 <li>
                                     <a title="Landing Page" href="{{ route('clients.index') }}" aria-expanded="false">
