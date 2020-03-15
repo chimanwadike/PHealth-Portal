@@ -72,8 +72,6 @@ class UserController extends Controller
 
             $this->validate($request, $rules, $customMessages);
 
-            $password = rand(100000, 999999);
-
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -83,14 +81,14 @@ class UserController extends Controller
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'facility_id' => $request->facility,
-                'password' => Hash::make($password),
+                'password' => bcrypt($request->phone),
             ]);
 
             //Assign role to the user
             $user->syncRoles([$request->role]);
 
             //Throw the admin created event
-            event(new UserCreated($user, $password));
+//            event(new UserCreated($user, $password));
 
             notify()->success('Successfully created!');
 
@@ -239,7 +237,7 @@ class UserController extends Controller
             $path = $request->file('image')->store("User-".auth()->user()->id, 'public');
 
             $user->profile_image = $path;
-            
+
             $user->save();
 
             notify()->success("Profile photo was updated successfully!");

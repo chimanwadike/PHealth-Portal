@@ -50,14 +50,14 @@ class User extends Authenticatable
                 $record = DB::table('clients')
                     ->select(DB::raw('COUNT(created_at) as count'))
                     ->whereRaw('created_at >= ? AND created_at <= ?
-                                GROUP BY MONTH(created_at)', 
+                                GROUP BY MONTH(created_at)',
                                     [$dates[0], $dates[1]])
                     ->get()->first();
 
                 $data[] = [
                     'title' => $week_title[$i],
-                    'count' => ($record ? $record->count : "0"), 
-                    'month' => date_format(date_create($dates[0]), "M")                   
+                    'count' => ($record ? $record->count : "0"),
+                    'month' => date_format(date_create($dates[0]), "M")
                 ];
 
                 $i--;
@@ -78,14 +78,14 @@ class User extends Authenticatable
                 $record = DB::table('clients')
                     ->select(DB::raw('COUNT(created_at) as count'))
                     ->whereRaw('user_id = ? AND created_at >= ? AND created_at <= ?
-                                GROUP BY MONTH(created_at)', 
+                                GROUP BY MONTH(created_at)',
                                     [auth()->user()->id, $dates[0], $dates[1]])
                     ->get()->first();
 
                 $data[] = [
                     'title' => $week_title[$i],
-                    'count' => ($record ? $record->count : "0"), 
-                    'month' => date_format(date_create($dates[0]), "M")                   
+                    'count' => ($record ? $record->count : "0"),
+                    'month' => date_format(date_create($dates[0]), "M")
                 ];
 
                 $i--;
@@ -111,13 +111,13 @@ class User extends Authenticatable
                 $record = DB::table('clients')
                     ->select(DB::raw('COUNT(created_at) as count'))
                     ->whereRaw('created_at >= ? AND created_at <= ?
-                                GROUP BY WEEK(created_at)', 
+                                GROUP BY WEEK(created_at)',
                                     [$dates[0], $dates[1]])
                     ->get()->first();
 
                 $data[] = [
                     'title' => $week_title[$i],
-                    'count' => ($record ? $record->count : "0"),                    
+                    'count' => ($record ? $record->count : "0"),
                 ];
 
                 $i--;
@@ -138,13 +138,13 @@ class User extends Authenticatable
                 $record = DB::table('clients')
                     ->select(DB::raw('COUNT(created_at) as count'))
                     ->whereRaw('user_id = ? AND created_at >= ? AND created_at <= ?
-                                GROUP BY WEEK(created_at)', 
+                                GROUP BY WEEK(created_at)',
                                     [auth()->user()->id, $dates[0], $dates[1]])
                     ->get()->first();
 
                 $data[] = [
                     'title' => $week_title[$i],
-                    'count' => ($record ? $record->count : "0"),                    
+                    'count' => ($record ? $record->count : "0"),
                 ];
 
                 $i--;
@@ -159,19 +159,19 @@ class User extends Authenticatable
         if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator')){
             $record = DB::table('clients')
                     ->select(DB::raw('COUNT(created_at) as count'))
-                    ->whereRaw('created_at >= ? AND created_at <= ? GROUP BY created_at', 
+                    ->whereRaw('created_at >= ? AND created_at <= ? GROUP BY created_at',
                         [date('Y-m-d', strtotime('now'))." 00:00:00", date('Y-m-d', strtotime('now'))." 23:59:59"])
-                    ->get()->first();
+                    ->get();
 
-            return ($record ? $record->count : "0");
+            return ($record ? count($record) : "0");
         }elseif(auth()->user()->hasRole('facility')){
             $record = DB::table('clients')
                     ->select(DB::raw('COUNT(created_at) as count'))
-                    ->whereRaw('user_id = ? AND created_at >= ? AND created_at <= ? GROUP BY created_at', 
+                    ->whereRaw('user_id = ? AND created_at >= ? AND created_at <= ? GROUP BY created_at',
                         [auth()->user()->id, date('Y-m-d', strtotime('now'))." 00:00:00", date('Y-m-d', strtotime('now'))." 23:59:59"])
-                    ->get()->first();
-                    
-            return ($record ? $record->count : "0");
+                    ->get();
+
+            return ($record ? count($record) : "0");
         }
-    } 
+    }
 }
