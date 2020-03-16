@@ -15,7 +15,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <ul class="breadcome-menu">
                                     <li>
-                                        <a href="{{ route("home") }}">Home</a> 
+                                        <a href="{{ route("home") }}">Home</a>
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
@@ -40,7 +40,7 @@
                         @if(auth()->user()->hasRole('admin'))
                             @if(count($users) > 0)
                                 <div class="mb-2">
-                                    <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon"> 
+                                    <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon">
                                         <i class="fa fa-plus"></i>
                                         New User
                                     </a>
@@ -67,8 +67,6 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <img style="width:80px; height:80px;" class="img-circle" alt="Pic" src="{{ $user->user_profile }}">
-
                                                 <h4 class="d-inline">{{ $user->name }}</h4>
                                                 <h6 class="text-muted">{{ $user->email }}</h6>
                                                 <h6 class="text-muted">{{ $user->phone }}</h6>
@@ -111,7 +109,7 @@
                                 </h3>
 
                                 @if(auth()->user()->hasRole('admin'))
-                                    <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon"> 
+                                    <a type="button" href="{{route('users.create')}}" class="btn btn-success btn-icon">
                                         <i class="fa fa-plus"></i>
                                         New User
                                     </a>
