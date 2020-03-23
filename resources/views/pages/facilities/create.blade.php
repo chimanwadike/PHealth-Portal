@@ -15,7 +15,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <ul class="breadcome-menu">
                                     <li>
-                                        <a href="{{ route("home") }}">Home</a> 
+                                        <a href="{{ route("home") }}">Home</a>
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
@@ -55,7 +55,7 @@
                 var lga = document.getElementById("lga").value;
 
                 var html = [];
-                
+
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -67,7 +67,7 @@
                     success: function(json_data){
 
                         if(json_data.length != 0){
-                            html.push('<option value = "">Select LGA of origin</option>');
+                            html.push('<option value = "">Select LGA</option>');
                             //loop through the array
                             for (i in json_data) {//begin for loop
                                 if(i == lga){

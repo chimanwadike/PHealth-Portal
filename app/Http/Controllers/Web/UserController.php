@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Model\State;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -34,8 +35,9 @@ class UserController extends Controller
         if(auth()->user()->hasRole('admin')){
             $roles = Role::all();
             $facilities = Facility::all();
+            $states = State::all();
 
-            return view('pages.users.create', compact('roles', 'facilities'));
+            return view('pages.users.create', compact('roles', 'facilities', 'states'));
         }else{
             abort(403);
         }
@@ -100,16 +102,12 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        if(auth()->user()->hasRole('admin')){
+        if(auth()->user()->hasRole(['admin','coordinator'])){
             $roles = Role::all();
             $facilities = Facility::all();
+            $states = State::all();
 
-            return view('pages.users.edit_admin', compact('roles', 'user', 'facilities'));
-        }elseif(auth()->user()->hasRole('coordinator')){
-            $roles = Role::all();
-            $facilities = Facility::all();
-
-            return view('pages.users.edit_coordinator', compact('roles', 'user', 'facilities'));
+            return view('pages.users.edit_admin', compact('roles', 'user', 'facilities', 'states'));
         }else{
             abort(403);
         }

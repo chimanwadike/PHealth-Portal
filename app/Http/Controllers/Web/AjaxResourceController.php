@@ -12,7 +12,7 @@ class AjaxResourceController extends Controller
 	public function getLga(Request $request)
     {
         $arrData = array();
-    
+
         if($request->state == null || $request->state == ""){
             return response()->json($arrData);
         }
@@ -24,6 +24,25 @@ class AjaxResourceController extends Controller
 
         foreach($lgas as $lga){
             $arrData[$lga->lga_code] = $lga->lga_name;
+        }
+
+        return response()->json($arrData);
+    }
+
+    public function getFacilities(Request $request){
+        $arrData = array();
+
+        if($request->lga == null || $request->lga == ""){
+            return response()->json($arrData);
+        }
+
+        $facilities = DB::table('facilities')
+            ->where('facilities.lga_code', '=', $request->lga)
+            ->orderBy('facilities.name', 'asc')
+            ->get();
+
+        foreach($facilities as $facility){
+            $arrData[$facility->id] = $facility->name;
         }
 
         return response()->json($arrData);

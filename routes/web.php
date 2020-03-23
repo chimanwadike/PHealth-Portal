@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('ajax')->group(function () {
         Route::post('/lga', 'Web\AjaxResourceController@getLga')->name('ajax.lga');
+        Route::post('/facilities', 'Web\AjaxResourceController@getFacilities')->name('ajax.facilities');
     });
 });
 
