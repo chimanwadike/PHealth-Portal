@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Facility extends Model
 {
 	protected $guarded = [];
-	
+
 	public function state()
 	{
 		return $this->belongsTo('App\Model\State', 'state_code', 'state_code');
@@ -22,6 +22,11 @@ class Facility extends Model
 	{
 		return $this->hasMany('App\Model\Client', 'facility_id', 'id');
 	}
+
+    public function spokes()
+    {
+        return $this->hasMany('App\Model\Spoke', 'facility_id', 'id');
+    }
 
 	public function refered_clients()
 	{

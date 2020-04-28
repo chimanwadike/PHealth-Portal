@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Exports\DataExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Client;
@@ -9,6 +10,7 @@ use App\Model\Facility;
 use App\User;
 use App\Model\State;
 use App\Model\Lga;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClientController extends Controller
 {
@@ -150,5 +152,16 @@ class ClientController extends Controller
 		}else{
             abort(403);
         }
+    }
+
+    public function export_clients(Request $request){
+        // validate request
+        $this->validate($request, [
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+
+        return (new DataExport($request->start_date, $request->end_date, 0))->download('clients_line_list.xlsx');
     }
 }

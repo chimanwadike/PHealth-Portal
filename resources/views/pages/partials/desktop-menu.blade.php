@@ -99,9 +99,9 @@
                         </li>
 
                         <li>
-                            <a title="Download Client Line List" href="#" aria-expanded="false">
+                            <a title="Download Client Line List" href="#" data-toggle="modal" data-target="#linelistModal" aria-expanded="false">
                                 <span class="fa fa-download icon-wrap" aria-hidden="true"></span>
-                                <span class="mini-click-non">DownLoad Clients</span>
+                                <span class="mini-click-non">Export Line List</span>
                             </a>
                         </li>
 
@@ -125,4 +125,33 @@
             </nav>
         </div>
     </nav>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="linelistModal" tabindex="-1" role="dialog" aria-labelledby="linelistModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Export Line List</h5>
+            </div>
+            <form action="{{Route('export.clients')}}" method="post" id="line_list_form">
+                @csrf
+            <div class="modal-body">
+                     <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" name="start_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" name="end_date" class="form-control">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"  onclick="event.preventDefault(); document.getElementById('line_list_form').submit();" >Export Data</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>

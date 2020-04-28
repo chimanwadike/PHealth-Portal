@@ -15,7 +15,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <ul class="breadcome-menu">
                                     <li>
-                                        <a href="{{ route("home") }}">Home</a> 
+                                        <a href="{{ route("home") }}">Home</a>
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
@@ -40,6 +40,11 @@
                         @include("pages.facilities.form")
                     </div>
                 </div>
+
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        @include("pages.facilities.spokes")
+                </div>
+
             </div>
         </div>
     </div>
@@ -55,7 +60,7 @@
                 var lga = document.getElementById("lga").value;
 
                 var html = [];
-                
+
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

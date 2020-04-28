@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>Name</label>
-            <input required name="name" value='{{ old("name", (isset($facility)) ? $facility->name : "") }}' type="text" class="form-control" placeholder="Facility Name" autofocus>
+            <input required name="name" value='{{ old("name", (isset($facility)) ? $facility->name : "") }}' type="text" class="form-control" {{isset($facility) ? "readonly" : ""}} placeholder="Facility Name" autofocus>
 
             @if($errors->has('name'))
                 <strong class="text-danger">{{ $errors->first('name') }}</strong>
@@ -14,7 +14,7 @@
 
         <div class="col-lg-6 col-md-6 col-xs-12 mt-3">
             <label>Code</label>
-            <input required name="code" value='{{ old("code", (isset($facility)) ? $facility->code : "") }}' type="text" class="form-control" placeholder="Facility Code" autofocus>
+            <input required name="code" value='{{ old("code", (isset($facility)) ? $facility->code : "") }}' type="text" class="form-control" {{isset($facility) ? "readonly" : ""}} placeholder="Facility Code" autofocus>
 
             @if($errors->has('code'))
                 <strong class="text-danger">{{ $errors->first('code') }}</strong>
@@ -45,13 +45,13 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>State</label>
-            <select id="state" name="state_code" class="form-control">
+            <select id="state" name="state_code" class="form-control" {{isset($facility) ? "readonly" : ""}}>
                 <option value=''>Select State</option>
                 @foreach($states as $state)
                   <option value="{{ $state->state_code }}" @if(old('state_code', (isset($facility)) ? $facility->state_code : "") == $state->state_code) {{ 'selected' }} @endif>{{ $state->state_name }}</option>
                 @endforeach
             </select>
-            
+
             @if($errors->has('state_code'))
                 <strong class="text-danger">{{ $errors->first('state_code') }}</strong>
             @endif
@@ -59,7 +59,7 @@
 
         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 mt-3">
             <label>LGA</label>
-            <select id="lga" name="lga_code" class="form-control">
+            <select id="lga" name="lga_code" class="form-control" {{isset($facility) ? "readonly" : ""}}>
                 @if(old('lga_code', (isset($facility)) ? $facility->lga_code : ""))
                     <option selected value='{{ old('lga_code', (isset($facility)) ? $facility->lga_code : "") }}'> {{ old('lga_code', (isset($facility)) ? $facility->lga_code : "") }} </option>
                 @else
@@ -77,4 +77,4 @@
         <button type="submit" class="btn btn-primary">{{ (isset($facility)) ? 'Update':'Create' }}</button>
         <a href="{{ route("facilities.index") }}" class="btn btn-default">Cancel</a>
     </div>
-</form>    
+</form>

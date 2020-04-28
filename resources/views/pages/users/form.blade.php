@@ -100,7 +100,7 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-3 mb-3">
-                <label>Facility</label>
+                <label>Hub Facility</label>
                 <select required class="form-control m-select2" name="facility" id="facility">
                     @if(isset($user->facility_id))
                         <option value="{{ $user->facility->id }}" selected>{{ $user->facility->name }}</option>
@@ -110,6 +110,20 @@
                     <strong class="text-danger">{{ $errors->first('facility') }}</strong>
                 @endif
             </div>
+
+
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt-3 mb-3">
+                <label>Spoke Facility</label>
+                <select class="form-control m-select2" name="spoke" id="spoke">
+                    @if(isset($user->spoke))
+                        <option value="{{ $user->spoke->id }}" selected>{{ $user->spoke->name }}</option>
+                    @endif
+                </select>
+                @if($errors->has('spoke'))
+                    <strong class="text-danger">{{ $errors->first('spoke') }}</strong>
+                @endif
+            </div>
+
         </div>
     @endif
 

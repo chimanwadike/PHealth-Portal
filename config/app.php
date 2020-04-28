@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 return [
 
@@ -162,6 +162,7 @@ return [
         Laratrust\LaratrustServiceProvider::class,
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         Propaganistas\LaravelPhone\PhoneServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

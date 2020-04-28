@@ -142,6 +142,41 @@
 
                 $("#state").trigger("change");
 
+                $("#facility").change(function () {
+                    var facility = $(this).val();
+                    var spoke = document.getElementById("spoke").value;
+
+                    var html_spoke = [];
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route("ajax.spokes") }}',
+                        type: "POST",
+                        data: {facility_id : facility},
+                        dataType: "json",
+                        success: function(json_data){
+                            if(json_data.length != 0){
+                                html_spoke.push('<option value = "">Select Spoke Facility</option>');
+                                //loop through the array
+                                for (i in json_data) {//begin for loop
+                                    if(i == spoke){
+                                        html_spoke.push("<option selected value = '" + i + "'>" + json_data[i] + "</option>");
+                                        continue;
+                                    }
+                                    html_spoke.push("<option value = '" + i + "'>" + json_data[i] + "</option>");
+                                }//end for loop
+                            }else{
+                                html_spoke.push('<option value = "">Select Facility first</option>');
+                            }
+                            //add the option values to the select list with an id of lga
+                            document.getElementById("spoke").innerHTML = html_spoke.join('');
+                        },
+                    });
+
+                });
+
 
             }
         });

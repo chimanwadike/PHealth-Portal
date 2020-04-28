@@ -84,6 +84,7 @@ class UserController extends Controller
                 'phone' => $request->phone,
                 'facility_id' => $request->facility,
                 'password' => bcrypt($request->phone),
+                'spoke_id' => $request->spoke
             ]);
 
             //Assign role to the user
@@ -158,6 +159,7 @@ class UserController extends Controller
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'facility_id' => $request->facility,
+                'spoke_id' => $request->spoke
             ]);
 
             $user->syncRoles([$request->role]);

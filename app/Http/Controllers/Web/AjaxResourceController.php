@@ -47,4 +47,23 @@ class AjaxResourceController extends Controller
 
         return response()->json($arrData);
     }
+
+    public function getSpokes(Request $request){
+        $arrData = array();
+
+        if($request->facility_id == null || $request->facility_id == ""){
+            return response()->json($arrData);
+        }
+
+        $spokes = DB::table('spokes')
+            ->where('spokes.facility_id', '=', $request->facility_id)
+            ->orderBy('spokes.name', 'asc')
+            ->get();
+
+        foreach($spokes as $spoke){
+            $arrData[$spoke->id] = $spoke->name;
+        }
+
+        return response()->json($arrData);
+    }
 }

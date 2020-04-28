@@ -15,7 +15,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <ul class="breadcome-menu">
                                     <li>
-                                        <a href="{{ route("home") }}">Home</a> 
+                                        <a href="{{ route("home") }}">Home</a>
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
@@ -37,14 +37,13 @@
             <div class="row">
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
-                        @if(count($facilities) > 0)
                             <div class="mb-2">
-                                <a type="button" href="{{route('facilities.create')}}" class="btn btn-success btn-icon"> 
+                                <a type="button" href="{{route('facilities.create')}}" class="btn btn-success btn-icon">
                                     <i class="fa fa-plus"></i>
                                     New Facility
                                 </a>
                             </div>
-                        @endif
+
 
                         @if(count($facilities) > 0)
                             <table class="table table-striped- table-bordered table-hover table-checkable" id="datatable">
@@ -96,14 +95,14 @@
                                                 @if($facility->created_by_)
                                                     <a href="{{ route('others_profile', $facility->created_by_->id) }}">
                                                         <span class="inline-block">
-                                                            <strong> 
-                                                                {{ $facility->created_by_->name }} 
+                                                            <strong>
+                                                                {{ $facility->created_by_->name }}
                                                             </strong>
                                                         </span>
                                                     </a>
                                                 @else
                                                     <span class="inline-block">
-                                                        <strong> 
+                                                        <strong>
                                                             Default
                                                         </strong>
                                                     </span>
@@ -111,7 +110,7 @@
                                             </td>
 
                                             <td class="text-center">
-                                                <a type="button" href="{{ route('facilities.edit', $facility->id) }}" class="btn btn-primary btn-icon">
+                                                <a type="button" href="{{ route('facilities.edit', $facility->id) }}" title="Edit Facility / Spokes"  class="btn btn-primary btn-icon">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
 
@@ -129,7 +128,7 @@
                                     No facilities yet!
                                 </h3>
 
-                                <a type="button" href="{{route('facilities.create')}}" class="btn btn-success btn-icon"> 
+                                <a type="button" href="{{route('facilities.create')}}" class="btn btn-success btn-icon">
                                     <i class="fa fa-plus"></i>
                                     New Facility
                                 </a>
@@ -152,12 +151,12 @@
 
                 <div class="modal-body">
                     <form id="delete-form" method="post" id="deleteFormId">
-                        {{csrf_field()}} 
-                        {{method_field('DELETE')}} 
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
                         <div class="form-group">
                             <input type="hidden" class="form-control" id="facilityid" name="_method" value="DELETE" >
                         </div>
-                        
+
                         <h4 class="text-center">Are you sure you want to delete this data?</h4>
 
                         <div class="modal-footer">

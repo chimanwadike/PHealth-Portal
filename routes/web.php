@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('/users', 'Web\UserController');
     Route::resource('/facilities', 'Web\FacilityController');
+    Route::resource('/spokes', 'Web\SpokeController');
     Route::resource('/clients', 'Web\ClientController');
     Route::get('/clients-by-facility', 'Web\ClientController@clients_by_facility')->name("clients.facilities");
     Route::get('/clients-by-facility/{facility}', 'Web\ClientController@clients_by_facility_show')->name("clients.facilities.show");
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients-by-state/{state}', 'Web\ClientController@clients_by_state_show')->name("clients.states.show");
     Route::get('/clients-by-lga', 'Web\ClientController@clients_by_lga')->name("clients.lgas");
     Route::get('/clients-by-lga/{lga}', 'Web\ClientController@clients_by_lga_show')->name("clients.lgas.show");
+    Route::post('/export_clients', 'Web\ClientController@export_clients')->name("export.clients");
 
     Route::prefix('profile')->group(function () {
         Route::get('/', 'Web\UserController@my_profile')->name('my_profile');
@@ -46,7 +48,18 @@ Route::middleware('auth')->group(function () {
     Route::prefix('ajax')->group(function () {
         Route::post('/lga', 'Web\AjaxResourceController@getLga')->name('ajax.lga');
         Route::post('/facilities', 'Web\AjaxResourceController@getFacilities')->name('ajax.facilities');
+        Route::post('/spokes', 'Web\AjaxResourceController@getSpokes')->name('ajax.spokes');
     });
+
+
 });
 
 Auth::routes();
+
+Route::get('command', function () {
+
+    /* php artisan migrate */
+    \Artisan::call('config:cache');
+    \Artisan::call('view:clear');
+    dd("Done");
+});

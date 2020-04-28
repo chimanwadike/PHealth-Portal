@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
 	protected $guarded = [];
-	
+
     public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'id');
@@ -30,12 +30,12 @@ class Client extends Model
 
 	public function referral_state()
 	{
-		return $this->belongsTo('App\Model\State', 'referral_state', 'state_code');
+		return $this->belongsTo('App\Model\State', 'referral_state_code', 'state_code');
 	}
 
 	public function referral_lga()
 	{
-		return $this->belongsTo('App\Model\Lga', 'referral_lga', 'lga_code');
+		return $this->belongsTo('App\Model\Lga', 'referral_lga_code', 'lga_code');
 	}
 
 	public function refered_to()
