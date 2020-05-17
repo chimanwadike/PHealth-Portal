@@ -133,6 +133,7 @@ class ClientController extends Controller
                         'address' => isset($client['address']) ? $client['address'] : null,
                         'address_2' => isset($client['address_2']) ? $client['address_2'] : null,
                         'address_3' => isset($client['address_3']) ? $client['address_3'] : null,
+                        'care_giver_name' => isset($client['care_giver_name']) ? $client['care_giver_name'] : null,
                         'phone_number' => isset($client['phone_number']) ? $client['phone_number'] : null,
                         'form_date' => isset($client['form_date']) ? Carbon::createFromFormat("d/m/Y",$client['form_date']) : null,
                         'current_result' => isset($client['current_result']) ? $client['current_result'] : null,
