@@ -15,7 +15,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <ul class="breadcome-menu">
                                     <li>
-                                        <a href="{{ route("home") }}">Home</a> 
+                                        <a href="{{ route("home") }}">Home</a>
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
@@ -65,7 +65,7 @@
                                             </td>
 
                                             <td>
-                                                {{ ucfirst($client->sex) }}
+                                                {{ $client->sex == "Select Gender" ? "" : ucfirst($client->sex) }}
                                             </td>
 
                                             <td>
@@ -80,14 +80,14 @@
                                                 @if($client->user)
                                                     <a href="{{ route('others_profile', $client->user->id) }}">
                                                         <span class="inline-block">
-                                                            <strong> 
+                                                            <strong>
                                                                 {{ $client->user->name }}
                                                             </strong>
                                                         </span>
                                                     </a>
                                                 @else
                                                     <span class="inline-block">
-                                                        <strong> 
+                                                        <strong>
                                                             Default
                                                         </strong>
                                                     </span>

@@ -52,50 +52,10 @@
 
                     @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
                         <li>
-                            <a class="has-arrow" aria-expanded="false">
+                            <a href="{{ route("clients.index") }}">
                                 <span class="fa fa-group icon-wrap"></span>
-                                <span class="mini-click-non">
-                                    Clients
-                                </span>
+                                <span class="mini-sub-pro">All Clients</span>
                             </a>
-
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li>
-                                    <a href="{{ route("clients.index") }}">
-                                        <span class="mini-sub-pro">All Clients</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route("clients.users") }}">
-                                        <span class="mini-sub-pro">By User</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route("clients.facilities") }}">
-                                        <span class="mini-sub-pro">By Facility</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route("clients.refered_facilities") }}">
-                                        <span class="mini-sub-pro">By Refered Facility</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route("clients.states") }}">
-                                        <span class="mini-sub-pro">By State</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route("clients.lgas") }}">
-                                        <span class="mini-sub-pro">By LGA</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                         <li>

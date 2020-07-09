@@ -35,69 +35,18 @@
                                 </li>
                             @endif
 
-                            @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coordinator'))
                                 <li>
-                                    <a class="has-arrow" aria-expanded="false">
-                                        <span class="mini-click-non">
-                                            Clients
-                                        </span>
+                                    <a href="{{ route("clients.index") }}">
+                                        <span class="mini-sub-pro">All Clients</span>
                                     </a>
-
-                                    <ul class="submenu-angle" aria-expanded="false">
-                                        <li>
-                                            <a href="{{ route("clients.index") }}">
-                                                <span class="mini-sub-pro">All Clients</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route("clients.users") }}">
-                                                <span class="mini-sub-pro">By User</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route("clients.facilities") }}">
-                                                <span class="mini-sub-pro">By Facility</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route("clients.refered_facilities") }}">
-                                                <span class="mini-sub-pro">By Refered Facility</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route("clients.states") }}">
-                                                <span class="mini-sub-pro">By State</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="{{ route("clients.lgas") }}">
-                                                <span class="mini-sub-pro">By LGA</span>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
 
                                 <li>
-                                    <a title="Download Client Line List" href="#" aria-expanded="false">
+                                    <a title="Download Client Line List" href="#" data-toggle="modal" data-target="#linelistModal" aria-expanded="false">
                                         <span class="icon-wrap" aria-hidden="true"></span>
                                         <span class="mini-click-non">Download Clients</span>
                                     </a>
                                 </li>
-
-                            @elseif(auth()->user()->hasRole('facility'))
-                                <li>
-                                    <a title="Landing Page" href="{{ route('clients.index') }}" aria-expanded="false">
-                                        <span class="educate-icon educate-home icon-wrap" aria-hidden="true"></span>
-                                        <span class="mini-click-non">Clients</span>
-                                    </a>
-                                </li>
-                            @endif
-
 
                             <li>
                                 <a href="{{ route("my_profile") }}">
@@ -108,6 +57,35 @@
                     </nav>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="linelistModal" tabindex="-1" role="dialog" aria-labelledby="linelistModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Export Line List</h5>
+            </div>
+            <form action="{{Route('export.clients')}}" method="post" id="line_list_form">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" name="start_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" name="end_date" class="form-control">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"  onclick="event.preventDefault(); document.getElementById('line_list_form').submit();" >Export Data</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

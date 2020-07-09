@@ -15,7 +15,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <ul class="breadcome-menu">
                                     <li>
-                                        <a href="{{ route("home") }}">Home</a> 
+                                        <a href="{{ route("home") }}">Home</a>
                                         <span class="bread-slash">/</span>
                                     </li>
                                     <li>
@@ -56,7 +56,7 @@
                                     <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
                                         <p>
                                             <b>Gender</b>
-                                            <br /> {{ ucfirst($client->sex) }}
+                                            <br />   {{ $client->sex == "Select Gender" ? "" : ucfirst($client->sex) }} {{ ucfirst($client->sex) }}
                                         </p>
                                     </div>
                                 </div>
