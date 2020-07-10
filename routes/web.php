@@ -25,17 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/facilities', 'Web\FacilityController');
     Route::resource('/spokes', 'Web\SpokeController');
     Route::resource('/clients', 'Web\ClientController');
-    Route::get('/clients-by-facility', 'Web\ClientController@clients_by_facility')->name("clients.facilities");
-    Route::get('/clients-by-facility/{facility}', 'Web\ClientController@clients_by_facility_show')->name("clients.facilities.show");
-    Route::get('/clients-by-refered-facility', 'Web\ClientController@clients_by_refered_facility')->name("clients.refered_facilities");
-    Route::get('/clients-by-refered-facility/{facility}', 'Web\ClientController@clients_by_refered_facility_show')->name("clients.refered_facilities.show");
-    Route::get('/clients-by-user', 'Web\ClientController@clients_by_user')->name("clients.users");
-    Route::get('/clients-by-user/{user}', 'Web\ClientController@clients_by_user_show')->name("clients.users.show");
-    Route::get('/clients-by-state', 'Web\ClientController@clients_by_state')->name("clients.states");
-    Route::get('/clients-by-state/{state}', 'Web\ClientController@clients_by_state_show')->name("clients.states.show");
-    Route::get('/clients-by-lga', 'Web\ClientController@clients_by_lga')->name("clients.lgas");
-    Route::get('/clients-by-lga/{lga}', 'Web\ClientController@clients_by_lga_show')->name("clients.lgas.show");
     Route::post('/export_clients', 'Web\ClientController@export_clients')->name("export.clients");
+    Route::post('/filter_clients', 'Web\ClientController@filter_clients')->name("filter.clients");
 
     Route::prefix('profile')->group(function () {
         Route::get('/', 'Web\UserController@my_profile')->name('my_profile');

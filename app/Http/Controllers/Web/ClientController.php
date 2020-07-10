@@ -19,10 +19,33 @@ class ClientController extends Controller
 	    $clients = null;
 
 		if(auth()->user()->hasRole(['admin', 'coordinator'])){
-            $this->clients = Client::paginate(10);
+            $this->clients = Client::get();
 		}elseif(auth()->user()->hasRole('facility')){
-            $this->clients = auth()->user()->uploaded_clients->paginate(10);
+            $this->clients = auth()->user()->uploaded_clients->get();
 		}
+
+        return view('pages.clients.list', ['clients' => $this->clients]);
+    }
+
+    public function filter_clients(Request $request){
+        $clients = null;
+
+        if(auth()->user()->hasRole(['admin', 'coordinator'])){
+            $this->clients = Client::get();
+        }elseif(auth()->user()->hasRole('facility')){
+            $this->clients = auth()->user()->uploaded_clients->get();
+        }
+
+        if ($request->state != null)
+            $this->clients = $this->clients->Where('client_state_code', $request->state);
+        if ($request->lga != null)
+            $this->clients = $this->clients->Where('client_lga_code', $request->lga);
+        if ($request->sex != null)
+            $this->clients = $this->clients->Where('sex', $request->sex);
+        if ($request->result != null)
+            $this->clients = $this->clients->Where('current_result', $request->result);
+
+
 
         return view('pages.clients.list', ['clients' => $this->clients]);
     }

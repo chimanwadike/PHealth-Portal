@@ -16,12 +16,7 @@
     <!-- Bootstrap CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <!-- owl.carousel CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}">
-    <!-- animate CSS
+      <!-- animate CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <!-- normalize CSS
@@ -36,21 +31,10 @@
     <!-- educate icon CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('css/educate-custon-icon.css') }}">
-    <!-- morrisjs CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{ asset('css/morrisjs/morris.css') }}">
-    <!-- mCustomScrollbar CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{ asset('css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
-    <!-- metisMenu CSS
-		============================================ -->
+
     <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu-vertical.css') }}">
     <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{ asset('css/calendar/fullcalendar.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/calendar/fullcalendar.print.min.css') }}">
-    <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- responsive CSS

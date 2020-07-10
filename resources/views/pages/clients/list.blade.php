@@ -102,7 +102,6 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                                {{ $clients->links() }}
                             </table>
                         @else
                             <div class="empty-state text-center my-3">
@@ -123,10 +122,86 @@
     <script>
         $(document).ready(function () {
             $('#datatable').DataTable({
-                search: true,
-                paging: false,
-                info: false
             });
+
+            //Code to hide and show user selection field based on message type selection
+                //Code for getting lgas upon state selection change
+                $("#state").change(function () {
+                    var state = $(this).val();
+
+                    var lga = document.getElementById("lga").value;
+
+                    var html = [];
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route("ajax.lga") }}',
+                        type: "POST",
+                        data: {state : state},
+                        dataType: "json",
+                        success: function(json_data){
+
+                            if(json_data.length != 0){
+                                html.push('<option value = "">Select LGA</option>');
+                                //loop through the array
+                                for (i in json_data) {//begin for loop
+                                    if(i == lga){
+                                        html.push("<option selected value = '" + i + "'>" + json_data[i] + "</option>");
+                                        continue;
+                                    }
+                                    html.push("<option value = '" + i + "'>" + json_data[i] + "</option>");
+                                }//end for loop
+                            }else{
+                                html.push('<option value = "">Select state first</option>');
+                            }
+                            //add the option values to the select list with an id of lga
+                            document.getElementById("lga").innerHTML = html.join('');
+                        },
+                    });
+                });
+
+                $("#lga").change(function () {
+                    var lga = $(this).val();
+                    var facility = document.getElementById("facility").value;
+
+                    var html_fac = [];
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route("ajax.facilities") }}',
+                        type: "POST",
+                        data: {lga : lga},
+                        dataType: "json",
+                        success: function(json_data){
+                            console.log(json_data)
+
+                            if(json_data.length != 0){
+                                html_fac.push('<option value = "">Select Facility</option>');
+                                //loop through the array
+                                for (i in json_data) {//begin for loop
+                                    if(i == facility){
+                                        html_fac.push("<option selected value = '" + i + "'>" + json_data[i] + "</option>");
+                                        continue;
+                                    }
+                                    html_fac.push("<option value = '" + i + "'>" + json_data[i] + "</option>");
+                                }//end for loop
+                            }else{
+                                html_fac.push('<option value = "">Select LGA first</option>');
+                            }
+                            //add the option values to the select list with an id of lga
+                            document.getElementById("facility").innerHTML = html_fac.join('');
+                        },
+                    });
+
+                });
+
+               // $("#state").trigger("change");
+
+
         });
     </script>
 @endsection
