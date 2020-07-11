@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/clients', 'Web\ClientController');
     Route::post('/export_clients', 'Web\ClientController@export_clients')->name("export.clients");
     Route::post('/filter_clients', 'Web\ClientController@filter_clients')->name("filter.clients");
+    Route::get('/analytics', 'Web\AnalyticsController@index')->name('analytics.index');
 
     Route::prefix('profile')->group(function () {
         Route::get('/', 'Web\UserController@my_profile')->name('my_profile');

@@ -13,7 +13,7 @@
                             </li>
 
                             <li>
-                                <a title="Landing Page" href="#" aria-expanded="false">
+                                <a title="Landing Page" href="{{Route('analytics.index')}}" aria-expanded="false">
                                     <span class="icon-wrap" aria-hidden="true"></span>
                                     <span class="mini-click-non">Dashboards</span>
                                 </a>
