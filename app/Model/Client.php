@@ -42,4 +42,8 @@ class Client extends Model
 	{
 		return $this->belongsTo('App\Model\Facility', 'reffered_to', 'id');
 	}
+
+	public function finger_prints(){
+        return $this->hasMany('App\Model\FingerPrint', 'client_id', 'id');
+    }
 }

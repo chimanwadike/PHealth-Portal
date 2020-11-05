@@ -24,3 +24,4 @@ Route::get('/facilities', 'Api\FacilityController@facilities')->name('api.facili
 //Route::post('/state_lgas/{state}', 'Api\LgaController@states_lga')->name('api.states_lga');
 Route::post('/client/store', 'Api\ClientController@client_store')->name('api.client_store');
 Route::post('/client/store_bulk', 'Api\ClientController@client_store_bulk')->name('api.client_store_bulk');
+Route::get('/clients.json', 'Api\ClientController@clients')->name('api.clients');

@@ -197,4 +197,13 @@ class ClientController extends Controller
 
 
 	}
+
+    public function clients()
+    {
+        return response()->json([
+            'code' => '01',
+            'clients' => Client::all(),
+            'message' => 'Successful'
+        ], 200);
+    }
 }

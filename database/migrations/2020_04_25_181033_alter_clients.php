@@ -14,9 +14,9 @@ class AlterClients extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->text('address_2')->nullable();
-            $table->text('address_3')->nullable();
-            $table->string('care_giver_name', 50)->nullable();
+//            $table->text('address_2')->nullable();
+//            $table->text('address_3')->nullable();
+//            $table->string('care_giver_name', 50)->nullable();
         });
     }
 
