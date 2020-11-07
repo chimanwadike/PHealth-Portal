@@ -17,7 +17,6 @@ class CreateFingerPrintsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('client_id');
             $table->string('client_identifier');
-            $table->string('finger_position');
             $table->longText('finger_print_capture');
             $table->timestamps();
 

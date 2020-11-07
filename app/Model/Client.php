@@ -46,6 +46,6 @@ class Client extends Model
 	}
 
 	public function finger_prints(){
-        return $this->hasMany('App\Model\FingerPrint', 'client_id', 'id');
+        return $this->hasOne('App\Model\FingerPrint', 'client_id', 'id');
     }
 }

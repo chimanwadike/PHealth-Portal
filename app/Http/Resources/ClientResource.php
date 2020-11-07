@@ -53,7 +53,8 @@ class ClientResource extends JsonResource
             'risk_test_date' => $this->risk_test_date,
             'pre_test_counsel' => $this->process_pretest($this->pre_test_counsel),
             'post_test_councel' =>  json_decode($this->post_test_councel)[0],
-            'risk_stratification' => $this->process_risk_stratification($this->risk_age_group, $this->risk_stratification)
+            'risk_stratification' => $this->process_risk_stratification($this->risk_age_group, $this->risk_stratification),
+            'finger_print' => json_decode($this->finger_prints)
         ];
     }
 

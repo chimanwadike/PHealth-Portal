@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\ClientResource;
+use App\Model\FingerPrint;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Client;
 use App\User;
+use Monolog\Handler\IFTTTHandler;
 
 class ClientController extends Controller
 {
@@ -111,11 +113,15 @@ class ClientController extends Controller
             break;
         }
 
+
         if ($user != null){
             if($user && $user->roles()->first()->name == "facility"){
                 $client_ids = array();
 
                 foreach($request->all() as $client){
+
+                    //test output
+                    //dd($client['finger_print']);
 
                     $client_info = Client::create([
                         'user_id' => $user->id,
@@ -178,6 +184,14 @@ class ClientController extends Controller
                         'services' => isset($client['services']) ? $client['services'] : null,
                         'spoke_id' => isset($client['spoke_id']) ? $client['spoke_id'] : null,
                     ]);
+
+                        if (isset($client['finger_print'])){
+                            FingerPrint::create([
+                                'client_id' => $client_info->id,
+                                    'client_identifier' => $client_info->client_identifier,
+                                    'finger_print_capture' => $client['finger_print']
+                                ]);
+                        }
 
                     $client_ids[] = $client['form_id'].":".$client_info->id;
                 }
