@@ -8,6 +8,8 @@ class Client extends Model
 {
 	protected $guarded = [];
 
+    //protected $dates = ['created_at', 'updated_at', 'referral_date', 'date_client_reported', 'date_of_test', 'hiv_test_date', 'form_date', 'date_of_birth', 'estimated' ];
+
     public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'id');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\ClientResource;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -202,7 +203,7 @@ class ClientController extends Controller
     {
         return response()->json([
             'code' => '01',
-            'clients' => Client::all(),
+            'clients' => ClientResource::collection(Client::where('stopped_at_pre_test', 0)->get()),
             'message' => 'Successful'
         ], 200);
     }
