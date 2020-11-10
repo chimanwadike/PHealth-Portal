@@ -219,7 +219,7 @@ class ClientController extends Controller
     {
         return response()->json([
             'code' => '01',
-            'clients' => ClientResource::collection(Client::where('stopped_at_pre_test', 0)->get()),
+            'clients' => ClientResource::collection(Client::where('stopped_at_pre_test', 0)->where('synced', 0)->get()),
             'message' => 'Successful'
         ], 200);
     }
@@ -229,7 +229,7 @@ class ClientController extends Controller
 	    if ($facility != null){
             return response()->json([
                 'code' => '01',
-                'clients' => ClientResource::collection($facility->clients),
+                'clients' => ClientResource::collection($facility->clients->where('stopped_at_pre_test',0)->where('synced', 0)),
                 'message' => 'Successful'
             ], 200);
         }else{
