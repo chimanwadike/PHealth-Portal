@@ -50,11 +50,10 @@ class ClientResource extends JsonResource
             'risk_test_result' => $this->risk_test_result,
             'post_tested_before_within_this_year' => $this->post_tested_before_within_this_year,
             'services' => $this->services,
-            'risk_test_date' => $this->risk_test_date,
             'pre_test_counsel' => $this->process_pretest($this->pre_test_counsel),
-            'post_test_councel' =>  json_decode($this->post_test_councel)[0],
+            'post_test_councel' =>  $this->remove_double_quotes(json_decode($this->post_test_councel)[0]),
             'risk_stratification' => $this->process_risk_stratification($this->risk_age_group, $this->risk_stratification),
-            'finger_print' => json_decode($this->finger_prints)
+            'finger_print' =>  $this->finger_prints != null ? json_decode($this->finger_prints->finger_print_capture) : null
         ];
     }
 
@@ -85,5 +84,10 @@ class ClientResource extends JsonResource
         }
 
         return $data;
+    }
+
+    private function remove_double_quotes($array){
+       return  preg_replace('/"([a-zA-Z]+[a-zA-Z0-9_]*)":/','$1:',$array);
+
     }
 }

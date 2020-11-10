@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\ClientResource;
+use App\Model\Facility;
 use App\Model\FingerPrint;
 use Carbon\Carbon;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Client;
@@ -221,4 +223,31 @@ class ClientController extends Controller
             'message' => 'Successful'
         ], 200);
     }
+
+    public function clients_by_facility($datim_code){
+	    $facility = Facility::where('code', $datim_code)->first();
+	    if ($facility != null){
+            return response()->json([
+                'code' => '01',
+                'clients' => ClientResource::collection($facility->clients),
+                'message' => 'Successful'
+            ], 200);
+        }else{
+            return response()->json([
+                'code' => '01',
+                'clients' => null,
+                'message' => 'No clients'
+            ], 200);
+        }
+    }
+
+    public function post_sync_clients(Request $request){
+	    $client_identifiers = $request->successful_ids;
+
+	    Client::whereIn('client_identifier', $client_identifiers)->update(array('synced' => 1));
+
+        return response()->json($client_identifiers, 200);
+
+    }
+
 }

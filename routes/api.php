@@ -25,3 +25,6 @@ Route::get('/facilities', 'Api\FacilityController@facilities')->name('api.facili
 Route::post('/client/store', 'Api\ClientController@client_store')->name('api.client_store');
 Route::post('/client/store_bulk', 'Api\ClientController@client_store_bulk')->name('api.client_store_bulk');
 Route::get('/clients.json', 'Api\ClientController@clients')->name('api.clients');
+Route::get('/clients.json/{datim_code}', 'Api\ClientController@clients_by_facility')->name('api.facility_clients');
+Route::post('/clients/post_sync', 'Api\ClientController@post_sync_clients')->name('api.post_sync_clients');
+
